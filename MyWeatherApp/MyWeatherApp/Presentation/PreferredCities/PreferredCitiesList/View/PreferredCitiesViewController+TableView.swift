@@ -2,14 +2,14 @@
 //  PreferredCitiesViewController+TableView.swift
 //  MyWeatherApp
 //
-//  Created by Enzo Forzani on 22/03/2023.
+//  Created by Enzo Forzani on 23/03/2023.
 //
 
 import Foundation
 import UIKit
 
-extension PreferredCitiesViewController : UITableViewDelegate, UITableViewDataSource {
-    
+extension PreferredCitiesListViewController: UITableViewDelegate, UITableViewDataSource {
+
     func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -19,11 +19,12 @@ extension PreferredCitiesViewController : UITableViewDelegate, UITableViewDataSo
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        viewModel.numberOfSections()
+        //viewModel.numberOfSections()
+        1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows(in: section)
+        return viewModel.getNumberOfPreferredCities()
     }
     
     func registerCells() {

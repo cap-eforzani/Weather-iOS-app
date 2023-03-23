@@ -18,9 +18,19 @@
 		8783459D29CB5FF6004FD216 /* PreferredCitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783459C29CB5FF6004FD216 /* PreferredCitiesListViewModel.swift */; };
 		878345A329CB653F004FD216 /* PreferredCitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878345A229CB653F004FD216 /* PreferredCitiesRepository.swift */; };
 		878345A729CB6624004FD216 /* DefaultPreferredCitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878345A629CB6624004FD216 /* DefaultPreferredCitiesRepository.swift */; };
-		878345B229CB75BF004FD216 /* PreferredCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878345B029CB75BF004FD216 /* PreferredCitiesViewController.swift */; };
-		878345B329CB75BF004FD216 /* PreferredCitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 878345B129CB75BF004FD216 /* PreferredCitiesViewController.xib */; };
-		878345B529CB7699004FD216 /* PreferredCitiesViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878345B429CB7699004FD216 /* PreferredCitiesViewController+TableView.swift */; };
+		878345B229CB75BF004FD216 /* PreferredCitiesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878345B029CB75BF004FD216 /* PreferredCitiesListViewController.swift */; };
+		878345B329CB75BF004FD216 /* PreferredCitiesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 878345B129CB75BF004FD216 /* PreferredCitiesListViewController.xib */; };
+		87A334A629CB874E008B2F4C /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334A529CB874E008B2F4C /* FloatingButton.swift */; };
+		87A334A929CC7DC7008B2F4C /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334A829CC7DC7008B2F4C /* AppContainer.swift */; };
+		87A334AB29CC7E0A008B2F4C /* PreferredCitiesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334AA29CC7E0A008B2F4C /* PreferredCitiesContainer.swift */; };
+		87A334AE29CC9044008B2F4C /* AddPreferredCityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334AD29CC9044008B2F4C /* AddPreferredCityUseCase.swift */; };
+		87A334B029CC94B9008B2F4C /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334AF29CC94B9008B2F4C /* AppFlowCoordinator.swift */; };
+		87A334B329CC95F1008B2F4C /* PreferredCitiesFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334B229CC95F1008B2F4C /* PreferredCitiesFlowCoordinator.swift */; };
+		87A334B929CCA47E008B2F4C /* PreferredCitiesViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334B829CCA47E008B2F4C /* PreferredCitiesViewController+TableView.swift */; };
+		87A334BB29CCAAF3008B2F4C /* GetPreferredCitiesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334BA29CCAAF3008B2F4C /* GetPreferredCitiesUseCase.swift */; };
+		87A334C129CCB06D008B2F4C /* AddPreferredCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334BF29CCB06D008B2F4C /* AddPreferredCityViewController.swift */; };
+		87A334C229CCB06D008B2F4C /* AddPreferredCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87A334C029CCB06D008B2F4C /* AddPreferredCityViewController.xib */; };
+		87A334C529CCB1D3008B2F4C /* AddPreferredCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334C429CCB1D3008B2F4C /* AddPreferredCityViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,9 +66,19 @@
 		8783459C29CB5FF6004FD216 /* PreferredCitiesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCitiesListViewModel.swift; sourceTree = "<group>"; };
 		878345A229CB653F004FD216 /* PreferredCitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCitiesRepository.swift; sourceTree = "<group>"; };
 		878345A629CB6624004FD216 /* DefaultPreferredCitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPreferredCitiesRepository.swift; sourceTree = "<group>"; };
-		878345B029CB75BF004FD216 /* PreferredCitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCitiesViewController.swift; sourceTree = "<group>"; };
-		878345B129CB75BF004FD216 /* PreferredCitiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferredCitiesViewController.xib; sourceTree = "<group>"; };
-		878345B429CB7699004FD216 /* PreferredCitiesViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreferredCitiesViewController+TableView.swift"; sourceTree = "<group>"; };
+		878345B029CB75BF004FD216 /* PreferredCitiesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCitiesListViewController.swift; sourceTree = "<group>"; };
+		878345B129CB75BF004FD216 /* PreferredCitiesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferredCitiesListViewController.xib; sourceTree = "<group>"; };
+		87A334A529CB874E008B2F4C /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		87A334A829CC7DC7008B2F4C /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		87A334AA29CC7E0A008B2F4C /* PreferredCitiesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCitiesContainer.swift; sourceTree = "<group>"; };
+		87A334AD29CC9044008B2F4C /* AddPreferredCityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPreferredCityUseCase.swift; sourceTree = "<group>"; };
+		87A334AF29CC94B9008B2F4C /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		87A334B229CC95F1008B2F4C /* PreferredCitiesFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCitiesFlowCoordinator.swift; sourceTree = "<group>"; };
+		87A334B829CCA47E008B2F4C /* PreferredCitiesViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreferredCitiesViewController+TableView.swift"; sourceTree = "<group>"; };
+		87A334BA29CCAAF3008B2F4C /* GetPreferredCitiesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPreferredCitiesUseCase.swift; sourceTree = "<group>"; };
+		87A334BF29CCB06D008B2F4C /* AddPreferredCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPreferredCityViewController.swift; sourceTree = "<group>"; };
+		87A334C029CCB06D008B2F4C /* AddPreferredCityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPreferredCityViewController.xib; sourceTree = "<group>"; };
+		87A334C429CCB1D3008B2F4C /* AddPreferredCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPreferredCityViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,9 +158,11 @@
 		8783458E29CB4D3F004FD216 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				87A334A729CC7D98008B2F4C /* Container */,
 				8783456629CB3F29004FD216 /* LaunchScreen.storyboard */,
 				8783455B29CB3F27004FD216 /* AppDelegate.swift */,
 				8783458F29CB4DAE004FD216 /* AppConfiguration.swift */,
+				87A334AF29CC94B9008B2F4C /* AppFlowCoordinator.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -165,6 +187,7 @@
 		8783459E29CB64D5004FD216 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				87A334AC29CC902B008B2F4C /* UseCases */,
 				878345A029CB64FB004FD216 /* Interfaces */,
 				8783459F29CB64E0004FD216 /* Entities */,
 			);
@@ -214,6 +237,7 @@
 		878345A829CB6B97004FD216 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				87A334A429CB8740008B2F4C /* Utils */,
 				878345A929CB6BEE004FD216 /* PreferredCities */,
 			);
 			path = Presentation;
@@ -222,8 +246,9 @@
 		878345A929CB6BEE004FD216 /* PreferredCities */ = {
 			isa = PBXGroup;
 			children = (
-				8783459B29CB5FD7004FD216 /* ViewModel */,
-				878345AA29CB6CCB004FD216 /* View */,
+				87A334BD29CCB03C008B2F4C /* AddPreferredCity */,
+				87A334B429CC9D10008B2F4C /* PreferredCitiesList */,
+				87A334B129CC95D7008B2F4C /* Flows */,
 			);
 			path = PreferredCities;
 			sourceTree = "<group>";
@@ -231,11 +256,80 @@
 		878345AA29CB6CCB004FD216 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				878345B029CB75BF004FD216 /* PreferredCitiesViewController.swift */,
-				878345B129CB75BF004FD216 /* PreferredCitiesViewController.xib */,
-				878345B429CB7699004FD216 /* PreferredCitiesViewController+TableView.swift */,
+				878345B029CB75BF004FD216 /* PreferredCitiesListViewController.swift */,
+				878345B129CB75BF004FD216 /* PreferredCitiesListViewController.xib */,
+				87A334B829CCA47E008B2F4C /* PreferredCitiesViewController+TableView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		87A334A429CB8740008B2F4C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				87A334A529CB874E008B2F4C /* FloatingButton.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		87A334A729CC7D98008B2F4C /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				87A334A829CC7DC7008B2F4C /* AppContainer.swift */,
+				87A334AA29CC7E0A008B2F4C /* PreferredCitiesContainer.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
+		87A334AC29CC902B008B2F4C /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				87A334AD29CC9044008B2F4C /* AddPreferredCityUseCase.swift */,
+				87A334BA29CCAAF3008B2F4C /* GetPreferredCitiesUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		87A334B129CC95D7008B2F4C /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				87A334B229CC95F1008B2F4C /* PreferredCitiesFlowCoordinator.swift */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		87A334B429CC9D10008B2F4C /* PreferredCitiesList */ = {
+			isa = PBXGroup;
+			children = (
+				8783459B29CB5FD7004FD216 /* ViewModel */,
+				878345AA29CB6CCB004FD216 /* View */,
+			);
+			path = PreferredCitiesList;
+			sourceTree = "<group>";
+		};
+		87A334BD29CCB03C008B2F4C /* AddPreferredCity */ = {
+			isa = PBXGroup;
+			children = (
+				87A334C329CCB1BD008B2F4C /* ViewModel */,
+				87A334BE29CCB048008B2F4C /* View */,
+			);
+			path = AddPreferredCity;
+			sourceTree = "<group>";
+		};
+		87A334BE29CCB048008B2F4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				87A334BF29CCB06D008B2F4C /* AddPreferredCityViewController.swift */,
+				87A334C029CCB06D008B2F4C /* AddPreferredCityViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		87A334C329CCB1BD008B2F4C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				87A334C429CCB1D3008B2F4C /* AddPreferredCityViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,7 +438,8 @@
 			files = (
 				8783456829CB3F29004FD216 /* LaunchScreen.storyboard in Resources */,
 				8783456529CB3F29004FD216 /* Assets.xcassets in Resources */,
-				878345B329CB75BF004FD216 /* PreferredCitiesViewController.xib in Resources */,
+				878345B329CB75BF004FD216 /* PreferredCitiesListViewController.xib in Resources */,
+				87A334C229CCB06D008B2F4C /* AddPreferredCityViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,14 +464,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87A334AE29CC9044008B2F4C /* AddPreferredCityUseCase.swift in Sources */,
 				8783458D29CB48C7004FD216 /* PreferredCity.swift in Sources */,
 				8783459029CB4DAE004FD216 /* AppConfiguration.swift in Sources */,
+				87A334A629CB874E008B2F4C /* FloatingButton.swift in Sources */,
+				87A334B029CC94B9008B2F4C /* AppFlowCoordinator.swift in Sources */,
+				87A334B929CCA47E008B2F4C /* PreferredCitiesViewController+TableView.swift in Sources */,
+				87A334B329CC95F1008B2F4C /* PreferredCitiesFlowCoordinator.swift in Sources */,
 				8783455C29CB3F27004FD216 /* AppDelegate.swift in Sources */,
 				878345A329CB653F004FD216 /* PreferredCitiesRepository.swift in Sources */,
-				878345B229CB75BF004FD216 /* PreferredCitiesViewController.swift in Sources */,
+				878345B229CB75BF004FD216 /* PreferredCitiesListViewController.swift in Sources */,
+				87A334C529CCB1D3008B2F4C /* AddPreferredCityViewModel.swift in Sources */,
 				878345A729CB6624004FD216 /* DefaultPreferredCitiesRepository.swift in Sources */,
+				87A334A929CC7DC7008B2F4C /* AppContainer.swift in Sources */,
 				8783459D29CB5FF6004FD216 /* PreferredCitiesListViewModel.swift in Sources */,
-				878345B529CB7699004FD216 /* PreferredCitiesViewController+TableView.swift in Sources */,
+				87A334BB29CCAAF3008B2F4C /* GetPreferredCitiesUseCase.swift in Sources */,
+				87A334AB29CC7E0A008B2F4C /* PreferredCitiesContainer.swift in Sources */,
+				87A334C129CCB06D008B2F4C /* AddPreferredCityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
