@@ -18,7 +18,7 @@ final class DefaultSearchCitiesRepository {
 
 extension DefaultSearchCitiesRepository: SearchCitiesRepository {
 
-    func searchCitiesByName(name: String, completionHandler: @escaping (Result<SearchCitiesResult, SearchCitiesUseCaseError>) -> Void) {
+    func searchCitiesByName(name: String, completionHandler: @escaping (Result<Cities, SearchCitiesUseCaseError>) -> Void) {
         api.getCitiesByName(name: name, completionHandler: completionHandler)
     }
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityTableViewCell" rowHeight="84" id="KGk-i7-Jjw" customClass="CityTableViewCell" customModule="MyWeatherApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKG-Mx-Jim">
+                        <rect key="frame" x="16" y="8" width="288" height="68"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oV7-pM-bBg">
+                                <rect key="frame" x="8" y="8" width="200" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="FyZ-DN-148"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4P-3v-RNK">
+                                <rect key="frame" x="8" y="39" width="41.333333333333336" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="H4P-3v-RNK" firstAttribute="leading" secondItem="UKG-Mx-Jim" secondAttribute="leading" constant="8" id="Lhy-AT-OKk"/>
+                            <constraint firstItem="oV7-pM-bBg" firstAttribute="leading" secondItem="UKG-Mx-Jim" secondAttribute="leading" constant="8" id="N0q-ry-Yp1"/>
+                            <constraint firstItem="oV7-pM-bBg" firstAttribute="top" secondItem="UKG-Mx-Jim" secondAttribute="top" constant="8" id="Qae-cA-uOM"/>
+                            <constraint firstAttribute="bottom" secondItem="H4P-3v-RNK" secondAttribute="bottom" constant="8" id="xvn-Gv-D4H"/>
+                            <constraint firstAttribute="bottom" secondItem="H4P-3v-RNK" secondAttribute="bottom" constant="8" id="zQD-o4-BDn"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="UKG-Mx-Jim" secondAttribute="trailing" constant="16" id="6yV-49-fxs"/>
+                    <constraint firstItem="UKG-Mx-Jim" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="KOR-9X-vhF"/>
+                    <constraint firstItem="UKG-Mx-Jim" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Xw9-Or-NWB"/>
+                    <constraint firstAttribute="bottom" secondItem="UKG-Mx-Jim" secondAttribute="bottom" constant="8" id="pOY-AE-Amk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <accessibility key="accessibilityConfiguration" identifier="CityTableViewCell"/>
+            <connections>
+                <outlet property="backView" destination="UKG-Mx-Jim" id="sAA-jy-1Kh"/>
+                <outlet property="cityNameLabel" destination="oV7-pM-bBg" id="xpi-4h-7am"/>
+                <outlet property="countryAndStateLabel" destination="H4P-3v-RNK" id="qTS-i0-bRq"/>
+            </connections>
+            <point key="canvasLocation" x="-24.427480916030532" y="33.802816901408455"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

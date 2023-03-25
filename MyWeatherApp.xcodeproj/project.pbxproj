@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8731919729CDD61E007B38A9 /* AddPreferredCityViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731919629CDD61E007B38A9 /* AddPreferredCityViewController+TableView.swift */; };
 		8731919A29CDDCCF007B38A9 /* OpenWeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731919929CDDCCF007B38A9 /* OpenWeatherAPI.swift */; };
-		8731919C29CDDDCA007B38A9 /* SearchCitiesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731919B29CDDDCA007B38A9 /* SearchCitiesResult.swift */; };
+		8731919C29CDDDCA007B38A9 /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731919B29CDDDCA007B38A9 /* Cities.swift */; };
 		8731919E29CDE34F007B38A9 /* SearchCitiesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731919D29CDE34F007B38A9 /* SearchCitiesUseCase.swift */; };
 		873191A029CDE482007B38A9 /* DefaultSearchCitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731919F29CDE481007B38A9 /* DefaultSearchCitiesRepository.swift */; };
 		873191A229CDE4B2007B38A9 /* SearchCitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873191A129CDE4B2007B38A9 /* SearchCitiesRepository.swift */; };
@@ -27,6 +27,10 @@
 		878345A729CB6624004FD216 /* DefaultPreferredCitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878345A629CB6624004FD216 /* DefaultPreferredCitiesRepository.swift */; };
 		878345B229CB75BF004FD216 /* PreferredCitiesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878345B029CB75BF004FD216 /* PreferredCitiesListViewController.swift */; };
 		878345B329CB75BF004FD216 /* PreferredCitiesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 878345B129CB75BF004FD216 /* PreferredCitiesListViewController.xib */; };
+		8793C93129CF2CB300B2E708 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793C92F29CF2CB300B2E708 /* CityTableViewCell.swift */; };
+		8793C93229CF2CB300B2E708 /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8793C93029CF2CB300B2E708 /* CityTableViewCell.xib */; };
+		8793C93429CF30AA00B2E708 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793C93329CF30AA00B2E708 /* UIViewExtensions.swift */; };
+		8793C93729CF31CD00B2E708 /* CityTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793C93629CF31CD00B2E708 /* CityTableViewCellViewModel.swift */; };
 		87A334A629CB874E008B2F4C /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334A529CB874E008B2F4C /* FloatingButton.swift */; };
 		87A334A929CC7DC7008B2F4C /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334A829CC7DC7008B2F4C /* AppContainer.swift */; };
 		87A334AB29CC7E0A008B2F4C /* PreferredCitiesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334AA29CC7E0A008B2F4C /* PreferredCitiesContainer.swift */; };
@@ -60,7 +64,7 @@
 /* Begin PBXFileReference section */
 		8731919629CDD61E007B38A9 /* AddPreferredCityViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddPreferredCityViewController+TableView.swift"; sourceTree = "<group>"; };
 		8731919929CDDCCF007B38A9 /* OpenWeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWeatherAPI.swift; sourceTree = "<group>"; };
-		8731919B29CDDDCA007B38A9 /* SearchCitiesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCitiesResult.swift; sourceTree = "<group>"; };
+		8731919B29CDDDCA007B38A9 /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		8731919D29CDE34F007B38A9 /* SearchCitiesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCitiesUseCase.swift; sourceTree = "<group>"; };
 		8731919F29CDE481007B38A9 /* DefaultSearchCitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchCitiesRepository.swift; sourceTree = "<group>"; };
 		873191A129CDE4B2007B38A9 /* SearchCitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCitiesRepository.swift; sourceTree = "<group>"; };
@@ -82,6 +86,10 @@
 		878345A629CB6624004FD216 /* DefaultPreferredCitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPreferredCitiesRepository.swift; sourceTree = "<group>"; };
 		878345B029CB75BF004FD216 /* PreferredCitiesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCitiesListViewController.swift; sourceTree = "<group>"; };
 		878345B129CB75BF004FD216 /* PreferredCitiesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferredCitiesListViewController.xib; sourceTree = "<group>"; };
+		8793C92F29CF2CB300B2E708 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
+		8793C93029CF2CB300B2E708 /* CityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityTableViewCell.xib; sourceTree = "<group>"; };
+		8793C93329CF30AA00B2E708 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		8793C93629CF31CD00B2E708 /* CityTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		87A334A529CB874E008B2F4C /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		87A334A829CC7DC7008B2F4C /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		87A334AA29CC7E0A008B2F4C /* PreferredCitiesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCitiesContainer.swift; sourceTree = "<group>"; };
@@ -221,7 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				8783458C29CB48C7004FD216 /* PreferredCity.swift */,
-				8731919B29CDDDCA007B38A9 /* SearchCitiesResult.swift */,
+				8731919B29CDDDCA007B38A9 /* Cities.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -272,6 +280,7 @@
 		878345A929CB6BEE004FD216 /* PreferredCities */ = {
 			isa = PBXGroup;
 			children = (
+				8793C92D29CF2C5A00B2E708 /* CityCell */,
 				87A334BD29CCB03C008B2F4C /* AddPreferredCity */,
 				87A334B429CC9D10008B2F4C /* PreferredCitiesList */,
 				87A334B129CC95D7008B2F4C /* Flows */,
@@ -289,11 +298,38 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8793C92D29CF2C5A00B2E708 /* CityCell */ = {
+			isa = PBXGroup;
+			children = (
+				8793C93529CF31B100B2E708 /* ViewModel */,
+				8793C92E29CF2C7D00B2E708 /* View */,
+			);
+			path = CityCell;
+			sourceTree = "<group>";
+		};
+		8793C92E29CF2C7D00B2E708 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8793C92F29CF2CB300B2E708 /* CityTableViewCell.swift */,
+				8793C93029CF2CB300B2E708 /* CityTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8793C93529CF31B100B2E708 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8793C93629CF31CD00B2E708 /* CityTableViewCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		87A334A429CB8740008B2F4C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				87A334A529CB874E008B2F4C /* FloatingButton.swift */,
 				873191A329CDEF98007B38A9 /* Observable.swift */,
+				8793C93329CF30AA00B2E708 /* UIViewExtensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -465,6 +501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8793C93229CF2CB300B2E708 /* CityTableViewCell.xib in Resources */,
 				8783456829CB3F29004FD216 /* LaunchScreen.storyboard in Resources */,
 				8783456529CB3F29004FD216 /* Assets.xcassets in Resources */,
 				878345B329CB75BF004FD216 /* PreferredCitiesListViewController.xib in Resources */,
@@ -495,19 +532,22 @@
 			files = (
 				873191A229CDE4B2007B38A9 /* SearchCitiesRepository.swift in Sources */,
 				87A334AE29CC9044008B2F4C /* AddPreferredCityUseCase.swift in Sources */,
+				8793C93129CF2CB300B2E708 /* CityTableViewCell.swift in Sources */,
+				8793C93729CF31CD00B2E708 /* CityTableViewCellViewModel.swift in Sources */,
 				8783458D29CB48C7004FD216 /* PreferredCity.swift in Sources */,
 				8783459029CB4DAE004FD216 /* AppConfiguration.swift in Sources */,
 				87A334A629CB874E008B2F4C /* FloatingButton.swift in Sources */,
 				873191A029CDE482007B38A9 /* DefaultSearchCitiesRepository.swift in Sources */,
 				87A334B029CC94B9008B2F4C /* AppFlowCoordinator.swift in Sources */,
 				87A334B929CCA47E008B2F4C /* PreferredCitiesViewController+TableView.swift in Sources */,
-				8731919C29CDDDCA007B38A9 /* SearchCitiesResult.swift in Sources */,
+				8731919C29CDDDCA007B38A9 /* Cities.swift in Sources */,
 				87A334B329CC95F1008B2F4C /* PreferredCitiesFlowCoordinator.swift in Sources */,
 				8783455C29CB3F27004FD216 /* AppDelegate.swift in Sources */,
 				878345A329CB653F004FD216 /* PreferredCitiesRepository.swift in Sources */,
 				8731919729CDD61E007B38A9 /* AddPreferredCityViewController+TableView.swift in Sources */,
 				878345B229CB75BF004FD216 /* PreferredCitiesListViewController.swift in Sources */,
 				87A334C529CCB1D3008B2F4C /* AddPreferredCityViewModel.swift in Sources */,
+				8793C93429CF30AA00B2E708 /* UIViewExtensions.swift in Sources */,
 				878345A729CB6624004FD216 /* DefaultPreferredCitiesRepository.swift in Sources */,
 				873191A429CDEF98007B38A9 /* Observable.swift in Sources */,
 				8731919A29CDDCCF007B38A9 /* OpenWeatherAPI.swift in Sources */,

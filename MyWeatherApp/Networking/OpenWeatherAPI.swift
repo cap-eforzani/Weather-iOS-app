@@ -17,7 +17,7 @@ class OpenWeatherAPI {
         self.apiBaseUrl = apiBaseUrl
     }
     
-    func getCitiesByName(name: String, completionHandler: @escaping (_ result: Result<SearchCitiesResult, SearchCitiesUseCaseError>) -> Void) {
+    func getCitiesByName(name: String, completionHandler: @escaping (_ result: Result<Cities, SearchCitiesUseCaseError>) -> Void) {
         let urlString = apiBaseUrl + "/geo/1.0/direct?q=" + name + "&limit=10&appid=" + apiKey
         
         guard let url = URL(string: urlString) else {
@@ -28,7 +28,7 @@ class OpenWeatherAPI {
         URLSession.shared.dataTask(with: url) { dataResponse, urlResponse, error in
             if error == nil,
                 let data = dataResponse,
-                let resultData = try? JSONDecoder().decode(SearchCitiesResult.self, from: data) {
+                let resultData = try? JSONDecoder().decode(Cities.self, from: data) {
                     completionHandler(.success(resultData))
                 } else {
                     completionHandler(.failure(.cannotParseData))

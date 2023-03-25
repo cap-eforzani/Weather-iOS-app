@@ -17,7 +17,7 @@ class AddPreferredCityViewController: UIViewController {
     
     var viewModel: AddPreferredCityViewModel!
     
-    var cities: [SearchCitiesResultElement] = []
+    var cellDataSource: [CityTableViewCellViewModel] = []
     
     static func create(with viewModel: AddPreferredCityViewModel) -> AddPreferredCityViewController {
         let view = AddPreferredCityViewController()
@@ -31,8 +31,8 @@ class AddPreferredCityViewController: UIViewController {
         bind(to: viewModel)
     }
 
-    private func bind(to: AddPreferredCityViewModel) {
-        to.isLoading.observe(on: activityIndicator) { isLoading in
+    private func bind(to viewModel: AddPreferredCityViewModel) {
+        viewModel.isLoading.observe(on: activityIndicator) { isLoading in
             DispatchQueue.main.async {
                 if (isLoading == true) {
                     self.activityIndicator.startAnimating()
@@ -41,12 +41,12 @@ class AddPreferredCityViewController: UIViewController {
                 }
             }
         }
-        to.noResults.observe(on: noResultsLabel) { noResults in
+        viewModel.noResults.observe(on: noResultsLabel) { noResults in
             let isNoResultsLabelHidden = noResults == false ? true : false
             self.showNoResultsLabel(value: isNoResultsLabelHidden)
         }
-        to.cityCells.observe(on: to.cityCells) { cities in
-            self.cities = cities
+        viewModel.cellDataSource.observe(on: viewModel.cellDataSource) { cellDataSource in
+            self.cellDataSource = cellDataSource
             self.reloadTableView()
         }
     }

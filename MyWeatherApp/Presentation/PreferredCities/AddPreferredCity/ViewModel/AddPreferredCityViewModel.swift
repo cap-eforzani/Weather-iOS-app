@@ -12,17 +12,16 @@ struct AddPreferredCityViewModelActions {
 }
 
 protocol AddPreferredCityViewModelInput {
-    func getTitleOfCityCell(city: SearchCitiesResultElement) -> String
     func didTapSearchButton(searchValue: String) -> Void
-    func searchCityByName(name: String) -> Void
     func getNumberOfCities() -> Int
+    func getHeightOfCell() -> CGFloat
     func addCity(name: String) -> Void
 }
 
 protocol AddPreferredCityViewModelOutput {
     var noResults: Observable<Bool> { get }
     var isLoading: Observable<Bool> { get }
-    var cityCells: Observable<[SearchCitiesResultElement]> { get }
+    var cellDataSource: Observable<[CityTableViewCellViewModel]> { get }
 }
 
 typealias AddPreferredCityViewModel = AddPreferredCityViewModelInput & AddPreferredCityViewModelOutput
@@ -31,8 +30,8 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
     
     var noResults: Observable<Bool> = Observable(false)
     var isLoading: Observable<Bool> = Observable(false)
-    var cityCells: Observable<[SearchCitiesResultElement]> = Observable([])
-    var cities: SearchCitiesResult?
+    var cellDataSource: Observable<[CityTableViewCellViewModel]> = Observable([])
+    var dataSource: Cities?
     
     private let searchCitiesUseCase: SearchCitiesUseCase
     private let addPreferredCityUseCase: AddPreferredCityUseCase
@@ -45,7 +44,33 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
     }
     
     private func mapCellData() {
-        self.cityCells.value = self.cities ?? []
+        self.cellDataSource.value = self.dataSource?.compactMap({
+            CityTableViewCellViewModel(city: $0)
+        }) ?? []
+    }
+    
+    private func searchCityByName(name: String) {
+        if (isLoading.value == false) {
+            isLoading.value = true
+            searchCitiesUseCase.execute(name: name) { result in
+                switch result {
+                case .success(let result):
+                    self.dataSource = result
+                    self.mapCellData()
+                    self.isLoading.value = false
+                    if (result.isEmpty) {
+                        self.noResults.value = true
+                    } else {
+                        self.noResults.value = false
+                    }
+                case .failure(_):
+                    self.dataSource = []
+                    self.mapCellData()
+                    self.isLoading.value = false
+                    self.noResults.value = true
+                }
+            }
+        }
     }
 }
 
@@ -55,8 +80,8 @@ extension DefaultAddPreferredCityViewModel {
         // TODO save selected city
     }
     
-    func getTitleOfCityCell(city: SearchCitiesResultElement) -> String {
-        return city.name + ", " + city.country + ", " + city.state
+    func getHeightOfCell() -> CGFloat {
+        80
     }
     
     func didTapSearchButton(searchValue: String) {
@@ -66,31 +91,7 @@ extension DefaultAddPreferredCityViewModel {
         }
     }
     
-    func searchCityByName(name: String) {
-        if (isLoading.value == false) {
-            isLoading.value = true
-            searchCitiesUseCase.execute(name: name) { result in
-                switch result {
-                case .success(let result):
-                    self.cities = result
-                    self.mapCellData()
-                    self.isLoading.value = false
-                    if (result.isEmpty) {
-                        self.noResults.value = true
-                    } else {
-                        self.noResults.value = false
-                    }
-                case .failure(_):
-                    self.cities = []
-                    self.mapCellData()
-                    self.isLoading.value = false
-                    self.noResults.value = true
-                }
-            }
-        }
-    }
-    
     func getNumberOfCities() -> Int {
-        return self.cities?.count ?? 0
+        return self.dataSource?.count ?? 0
     }
 }

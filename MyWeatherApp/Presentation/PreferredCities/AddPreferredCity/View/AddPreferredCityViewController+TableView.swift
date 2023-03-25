@@ -33,13 +33,22 @@ extension AddPreferredCityViewController: UITableViewDelegate, UITableViewDataSo
     }
     
     func registerCells() {
-        citiesList.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        citiesList.register(CityTableViewCell.register(), forCellReuseIdentifier: CityTableViewCell.reuseIdentifier)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let city = self.cities[indexPath.row]
-        cell.textLabel?.text = viewModel.getTitleOfCityCell(city: city)
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: CityTableViewCell.reuseIdentifier,
+            for: indexPath
+        ) as? CityTableViewCell else {
+            assertionFailure("Cannot dequeue reusable cell \(CityTableViewCell.self) with reuseIdentifier: \(CityTableViewCell.reuseIdentifier)")
+            return UITableViewCell()
+        }
+        cell.fill(with: self.cellDataSource[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        viewModel.getHeightOfCell()
     }
 }
