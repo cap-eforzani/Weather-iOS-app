@@ -39,11 +39,18 @@
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="filled" title="Search"/>
+                    <connections>
+                        <action selector="didTapSearchButton:" destination="-1" eventType="touchUpInside" id="rKV-Oy-jBX"/>
+                    </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Uen-hz-1fj">
                     <rect key="frame" x="0.0" y="182" width="393" height="670"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="B6D-CL-L4x"/>
+                        <outlet property="delegate" destination="-1" id="DIc-MG-u5j"/>
+                    </connections>
                 </tableView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="dau-Tr-DqM">
                     <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>

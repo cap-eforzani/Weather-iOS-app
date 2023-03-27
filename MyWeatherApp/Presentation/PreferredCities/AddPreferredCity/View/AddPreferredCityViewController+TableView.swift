@@ -45,6 +45,7 @@ extension AddPreferredCityViewController: UITableViewDelegate, UITableViewDataSo
             return UITableViewCell()
         }
         cell.fill(with: self.cellDataSource[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
     

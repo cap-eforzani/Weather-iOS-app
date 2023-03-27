@@ -8,5 +8,5 @@
 import Foundation
 
 protocol SearchCitiesRepository {
-    func searchCitiesByName(name: String, completionHandler: @escaping (_ result: Result<Cities, SearchCitiesUseCaseError>) -> Void)
+    func searchCitiesByName(name: String) async throws -> Cities
 }

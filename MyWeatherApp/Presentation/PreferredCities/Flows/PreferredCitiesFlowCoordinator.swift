@@ -15,7 +15,7 @@ protocol PreferredCitiesFlowCoordinatorDependencies {
 
 final class PreferredCitiesFlowCoordinator {
     
-    private weak var navigationController: UINavigationController?
+    private let navigationController: UINavigationController
     private let dependencies: PreferredCitiesFlowCoordinatorDependencies
 
     init(navigationController: UINavigationController, dependencies: PreferredCitiesFlowCoordinatorDependencies) {
@@ -26,18 +26,16 @@ final class PreferredCitiesFlowCoordinator {
     func start() {
         let actions = PreferredCitiesListViewModelActions(showAddPreferredCity: showAddPreferredCity)
         let viewController = dependencies.makePreferredCitiesViewController(actions: actions)
-        navigationController?.pushViewController(viewController, animated: false)
+        navigationController.pushViewController(viewController, animated: false)
     }
     
     private func showAddPreferredCity() {
         let actions = AddPreferredCityViewModelActions(showPreferredCities: showPreferredCities)
         let viewController = dependencies.makeAddPreferredCityViewController(actions: actions)
-        navigationController?.pushViewController(viewController, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     private func showPreferredCities() {
-        let actions = PreferredCitiesListViewModelActions(showAddPreferredCity: showAddPreferredCity)
-        let viewController = dependencies.makePreferredCitiesViewController(actions: actions)
-        navigationController?.pushViewController(viewController, animated: true)
+        navigationController.popViewController(animated: true)
     }
 }

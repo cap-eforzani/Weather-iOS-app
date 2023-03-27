@@ -66,8 +66,10 @@ class AddPreferredCityViewController: UIViewController {
         setupTableView()
     }
     
-    @objc private func didTapSearchButton() {
-        let searchValue = cityNameTextField.text ?? ""
-        viewModel.didTapSearchButton(searchValue: searchValue)
+    @IBAction func didTapSearchButton(_ sender: UIButton) {
+        Task { @MainActor in
+            let searchValue = cityNameTextField.text ?? ""
+            await viewModel.didTapSearchButton(searchValue: searchValue)
+        }
     }
 }

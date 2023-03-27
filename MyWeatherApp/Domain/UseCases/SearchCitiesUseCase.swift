@@ -13,7 +13,7 @@ enum SearchCitiesUseCaseError: Error {
 }
 
 protocol SearchCitiesUseCase {
-    func execute(name: String, completionHandler: @escaping (_ result: Result<Cities, SearchCitiesUseCaseError>) -> Void)
+    func execute(name: String) async throws -> Cities
 }
 
 final class DefaultSearchCitiesUseCase : SearchCitiesUseCase {
@@ -24,7 +24,7 @@ final class DefaultSearchCitiesUseCase : SearchCitiesUseCase {
         self.searchCitiesRepository = searchCitiesRepository
     }
     
-    func execute(name: String, completionHandler: @escaping (Result<Cities, SearchCitiesUseCaseError>) -> Void) {
-        return searchCitiesRepository.searchCitiesByName(name: name, completionHandler: completionHandler)
+    func execute(name: String) async throws -> Cities {
+        return try await searchCitiesRepository.searchCitiesByName(name: name)
     }
 }

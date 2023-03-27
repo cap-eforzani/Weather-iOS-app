@@ -18,7 +18,27 @@ final class DefaultSearchCitiesRepository {
 
 extension DefaultSearchCitiesRepository: SearchCitiesRepository {
 
-    func searchCitiesByName(name: String, completionHandler: @escaping (Result<Cities, SearchCitiesUseCaseError>) -> Void) {
-        api.getCitiesByName(name: name, completionHandler: completionHandler)
+    func searchCitiesByName(name: String) async throws -> Cities {
+        let trimmedName = name.trimmingCharacters(in: .whitespaces)
+        if (trimmedName.isEmpty == false) {
+            let result = await withCheckedContinuation { continuation in
+                api.getCitiesByName(name: trimmedName) { cities in
+                    continuation.resume(returning: cities)
+                }
+            }
+            let cities = try result.get()
+            return removeSameCities(cities: cities)
+        }
+        return []
+    }
+    
+    private func removeSameCities(cities: Cities) -> Cities {
+        var alreadyThere = Set<City>()
+        let uniqueCities = cities.compactMap { (city) -> City? in
+            guard !alreadyThere.contains(city) else { return nil }
+            alreadyThere.insert(city)
+            return city
+        }
+        return uniqueCities
     }
 }

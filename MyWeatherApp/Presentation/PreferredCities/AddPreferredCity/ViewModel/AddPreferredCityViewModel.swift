@@ -12,7 +12,7 @@ struct AddPreferredCityViewModelActions {
 }
 
 protocol AddPreferredCityViewModelInput {
-    func didTapSearchButton(searchValue: String) -> Void
+    func didTapSearchButton(searchValue: String) async -> Void
     func getNumberOfCities() -> Int
     func getHeightOfCell() -> CGFloat
     func addCity(name: String) -> Void
@@ -49,27 +49,24 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
         }) ?? []
     }
     
-    private func searchCityByName(name: String) {
+    private func searchCityByName(name: String) async {
         if (isLoading.value == false) {
             isLoading.value = true
-            searchCitiesUseCase.execute(name: name) { result in
-                switch result {
-                case .success(let result):
-                    self.dataSource = result
-                    self.mapCellData()
-                    self.isLoading.value = false
-                    if (result.isEmpty) {
-                        self.noResults.value = true
-                    } else {
-                        self.noResults.value = false
-                    }
-                case .failure(_):
-                    self.dataSource = []
-                    self.mapCellData()
-                    self.isLoading.value = false
+            do {
+                let cities = try await searchCitiesUseCase.execute(name: name)
+                self.dataSource = cities
+                self.isLoading.value = false
+                if (cities.isEmpty == true) {
                     self.noResults.value = true
+                } else {
+                    self.noResults.value = false
                 }
+            } catch {
+                self.dataSource = []
+                self.isLoading.value = false
+                self.noResults.value = true
             }
+            self.mapCellData()
         }
     }
 }
@@ -84,11 +81,8 @@ extension DefaultAddPreferredCityViewModel {
         80
     }
     
-    func didTapSearchButton(searchValue: String) {
-        let trimmedString = searchValue.trimmingCharacters(in: .whitespaces)
-        if (trimmedString.isEmpty == false) {
-            searchCityByName(name: trimmedString)
-        }
+    func didTapSearchButton(searchValue: String) async {
+        await searchCityByName(name: searchValue)
     }
     
     func getNumberOfCities() -> Int {

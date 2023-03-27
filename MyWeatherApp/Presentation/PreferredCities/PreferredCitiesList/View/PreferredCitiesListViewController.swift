@@ -27,9 +27,7 @@ class PreferredCitiesListViewController: UIViewController {
         setupViews()
     }
     
-    private func setupViews() {
-        navigationItem.hidesBackButton = true
-        
+    private func setupViews() {        
         title = viewModel.screenTitle
         
         view.addSubview(floatingButton.button)
