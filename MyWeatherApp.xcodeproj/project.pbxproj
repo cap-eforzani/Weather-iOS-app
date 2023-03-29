@@ -31,6 +31,7 @@
 		878345A729CB6624004FD216 /* DefaultPreferredCitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878345A629CB6624004FD216 /* DefaultPreferredCitiesRepository.swift */; };
 		878345B229CB75BF004FD216 /* PreferredCitiesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878345B029CB75BF004FD216 /* PreferredCitiesListViewController.swift */; };
 		878345B329CB75BF004FD216 /* PreferredCitiesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 878345B129CB75BF004FD216 /* PreferredCitiesListViewController.xib */; };
+		8787C2DB29D4BDAA0033FF90 /* DeletePreferredCityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8787C2DA29D4BDAA0033FF90 /* DeletePreferredCityUseCase.swift */; };
 		8793C93129CF2CB300B2E708 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793C92F29CF2CB300B2E708 /* CityTableViewCell.swift */; };
 		8793C93229CF2CB300B2E708 /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8793C93029CF2CB300B2E708 /* CityTableViewCell.xib */; };
 		8793C93429CF30AA00B2E708 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8793C93329CF30AA00B2E708 /* UIViewExtensions.swift */; };
@@ -94,6 +95,7 @@
 		878345A629CB6624004FD216 /* DefaultPreferredCitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPreferredCitiesRepository.swift; sourceTree = "<group>"; };
 		878345B029CB75BF004FD216 /* PreferredCitiesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCitiesListViewController.swift; sourceTree = "<group>"; };
 		878345B129CB75BF004FD216 /* PreferredCitiesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferredCitiesListViewController.xib; sourceTree = "<group>"; };
+		8787C2DA29D4BDAA0033FF90 /* DeletePreferredCityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePreferredCityUseCase.swift; sourceTree = "<group>"; };
 		8793C92F29CF2CB300B2E708 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		8793C93029CF2CB300B2E708 /* CityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityTableViewCell.xib; sourceTree = "<group>"; };
 		8793C93329CF30AA00B2E708 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				8731919D29CDE34F007B38A9 /* SearchCitiesUseCase.swift */,
 				8741E9F629D322CB0040E7EE /* GetIsPreferredImageUseCase.swift */,
 				8741EA0729D47FBA0040E7EE /* IsCityAlreadyAddedUseCase.swift */,
+				8787C2DA29D4BDAA0033FF90 /* DeletePreferredCityUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				87A334AB29CC7E0A008B2F4C /* PreferredCitiesContainer.swift in Sources */,
 				87A334C129CCB06D008B2F4C /* AddPreferredCityViewController.swift in Sources */,
 				8731919E29CDE34F007B38A9 /* SearchCitiesUseCase.swift in Sources */,
+				8787C2DB29D4BDAA0033FF90 /* DeletePreferredCityUseCase.swift in Sources */,
 				8741E9F329D31FF50040E7EE /* ImageRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

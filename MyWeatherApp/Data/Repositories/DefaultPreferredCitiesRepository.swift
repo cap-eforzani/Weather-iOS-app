@@ -30,6 +30,32 @@ final class DefaultPreferredCitiesRepository {
         }
     }
     
+    func removePreferredCityFromRepository(city: City) throws -> Void {
+        let context = persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PreferredCity")
+        request.returnsObjectsAsFaults = false
+        let results = try context.fetch(request)
+        if !results.isEmpty {
+            for result in results as! [NSManagedObject] {
+                guard let name = result.value(forKey: "name") as? String else { throw GetPreferredCitiesUseCaseError.cityNameNotFound }
+                guard let lat = result.value(forKey: "lat") as? Double else { throw GetPreferredCitiesUseCaseError.cityLatNotFound }
+                guard let lon = result.value(forKey: "lon") as? Double else { throw GetPreferredCitiesUseCaseError.cityLonNotFound }
+                guard let country = result.value(forKey: "country") as? String else { throw GetPreferredCitiesUseCaseError.cityCountryNotFound }
+                guard let state = result.value(forKey: "state") as? String else { throw GetPreferredCitiesUseCaseError.cityStateNotFound }
+                let currentCity = City(name: name, lat: lat, lon: lon, country: country, state: state)
+                if (currentCity.isEquals(to: city) == true) {
+                    context.delete(result)
+                    break
+                }
+            }
+        }
+        do {
+            try context.save()
+        } catch {
+            throw DeletePreferredCityUseCaseError.coreDataSavingFailed
+        }
+    }
+    
     func removeAllPreferredCitiesFromRepository() throws -> Void {
         let context = persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PreferredCity")
@@ -43,8 +69,7 @@ final class DefaultPreferredCitiesRepository {
         do {
             try context.save()
         } catch {
-            // TODO TO BE CHANGED TO DELETE USE CASE
-            throw AddPreferredCityUseCaseError.coreDataSavingFailed
+            throw DeletePreferredCityUseCaseError.coreDataSavingFailed
         }
     }
     
@@ -86,6 +111,10 @@ final class DefaultPreferredCitiesRepository {
 
 extension DefaultPreferredCitiesRepository: PreferredCitiesRepository {
 
+    func removePreferredCity(city: City) throws {
+        return try removePreferredCityFromRepository(city: city)
+    }
+    
     func getPreferredCities() throws -> Cities {
         return try getPreferredCitiesFromRepository()
     }

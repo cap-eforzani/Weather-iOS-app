@@ -31,6 +31,7 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
     var cellDataSource: Observable<[CityTableViewCellViewModel]> = Observable([])
     var dataSource: Cities?
 
+    private let deletePreferredCityUseCase: DeletePreferredCityUseCase
     private let isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase
     private let getIsPreferredImageUseCase: GetIsPreferredImageUseCase
     private let searchCitiesUseCase: SearchCitiesUseCase
@@ -38,8 +39,9 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
     private let actions: AddPreferredCityViewModelActions?
     private let cellActions: CityTableViewCellViewModelActions?
     
-    init(addPreferredCityUseCase: AddPreferredCityUseCase, searchCitiesUseCase: SearchCitiesUseCase, getIsPreferredImageUseCase: GetIsPreferredImageUseCase, isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase, actions: AddPreferredCityViewModelActions? = nil, cellActions: CityTableViewCellViewModelActions? = nil) {
+    init(addPreferredCityUseCase: AddPreferredCityUseCase, deletePreferredCityUseCase: DeletePreferredCityUseCase, searchCitiesUseCase: SearchCitiesUseCase, getIsPreferredImageUseCase: GetIsPreferredImageUseCase, isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase, actions: AddPreferredCityViewModelActions? = nil, cellActions: CityTableViewCellViewModelActions? = nil) {
         self.addPreferredCityUseCase = addPreferredCityUseCase
+        self.deletePreferredCityUseCase = deletePreferredCityUseCase
         self.searchCitiesUseCase = searchCitiesUseCase
         self.getIsPreferredImageUseCase = getIsPreferredImageUseCase
         self.isCityAlreadyAddedUseCase = isCityAlreadyAddedUseCase
@@ -49,7 +51,8 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
     
     private func mapCellData() {
         self.cellDataSource.value = self.dataSource?.compactMap({
-            DefaultCityTableViewCellViewModel(isCityAlreadyAddedUseCase: isCityAlreadyAddedUseCase, addPreferredCityUseCase: addPreferredCityUseCase, getIsPreferredImageUseCase: getIsPreferredImageUseCase, actions: cellActions, city: $0)
+            DefaultCityTableViewCellViewModel(isCityAlreadyAddedUseCase: isCityAlreadyAddedUseCase,
+                                              deletePreferredCityUseCase: deletePreferredCityUseCase, addPreferredCityUseCase: addPreferredCityUseCase, getIsPreferredImageUseCase: getIsPreferredImageUseCase, actions: cellActions, city: $0)
         }) ?? []
     }
     

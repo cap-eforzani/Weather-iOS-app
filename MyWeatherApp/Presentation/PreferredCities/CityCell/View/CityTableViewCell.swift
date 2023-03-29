@@ -31,8 +31,7 @@ class CityTableViewCell: UITableViewCell {
     
     @objc func didFavoriteImageTapped(sender: UITapGestureRecognizer) {
         if (sender.state == .ended) {
-            viewModel.setCityToPreferred()
-            viewModel.getIsPreferredImage()
+            viewModel.didTapPreferredButton()
         }
     }
     
