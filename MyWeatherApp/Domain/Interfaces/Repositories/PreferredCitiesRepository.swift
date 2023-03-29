@@ -8,6 +8,7 @@
 import Foundation
 
 protocol PreferredCitiesRepository {
-    func getPreferredCities() throws -> [String]
-    func savePreferredCity(name: String) throws
+    func getPreferredCities() throws -> Cities
+    func savePreferredCity(city: City) throws
+    func isCityAlreadyAddedToPreferred(city: City) throws -> Bool
 }

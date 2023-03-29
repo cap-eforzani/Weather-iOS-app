@@ -24,12 +24,12 @@ typealias PreferredCitiesListViewModel = PreferredCitiesListViewModelInput & Pre
 
 class DefaultPreferredCitiesListViewModel : PreferredCitiesListViewModel {
 
-    private let getPreferredCitiesUseCase: GetPreferredCityUseCase
+    private let getPreferredCitiesUseCase: GetPreferredCitiesUseCase
     private let actions: PreferredCitiesListViewModelActions?
     
     let screenTitle = "My Preferred Cities"
     
-    init(getPreferredCitiesUseCase: GetPreferredCityUseCase, actions: PreferredCitiesListViewModelActions? = nil) {
+    init(getPreferredCitiesUseCase: GetPreferredCitiesUseCase, actions: PreferredCitiesListViewModelActions? = nil) {
         self.getPreferredCitiesUseCase = getPreferredCitiesUseCase
         self.actions = actions
     }

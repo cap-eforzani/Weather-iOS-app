@@ -7,8 +7,12 @@
 
 import Foundation
 
+enum AddPreferredCityUseCaseError: Error {
+    case coreDataSavingFailed
+}
+
 protocol AddPreferredCityUseCase {
-    func execute(name: String) throws -> Void
+    func execute(city: City) throws -> Void
 }
 
 final class DefaultAddPreferredCityUseCase : AddPreferredCityUseCase {
@@ -19,8 +23,8 @@ final class DefaultAddPreferredCityUseCase : AddPreferredCityUseCase {
         self.preferredCitiesRepository = preferredCitiesRepository
     }
     
-    func execute(name: String) throws {
-        try preferredCitiesRepository.savePreferredCity(name: name)
+    func execute(city: City) throws {
+        try preferredCitiesRepository.savePreferredCity(city: city)
     }
     
 }

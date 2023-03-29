@@ -14,13 +14,17 @@
 		873191A029CDE482007B38A9 /* DefaultSearchCitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8731919F29CDE481007B38A9 /* DefaultSearchCitiesRepository.swift */; };
 		873191A229CDE4B2007B38A9 /* SearchCitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873191A129CDE4B2007B38A9 /* SearchCitiesRepository.swift */; };
 		873191A429CDEF98007B38A9 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873191A329CDEF98007B38A9 /* Observable.swift */; };
+		8741E9F329D31FF50040E7EE /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741E9F229D31FF50040E7EE /* ImageRepository.swift */; };
+		8741E9F529D320740040E7EE /* DefaultImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741E9F429D320740040E7EE /* DefaultImageRepository.swift */; };
+		8741E9F729D322CB0040E7EE /* GetIsPreferredImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741E9F629D322CB0040E7EE /* GetIsPreferredImageUseCase.swift */; };
+		8741EA0629D47CAB0040E7EE /* PreferredCityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8741EA0429D47CAB0040E7EE /* PreferredCityModel.xcdatamodeld */; };
+		8741EA0829D47FBA0040E7EE /* IsCityAlreadyAddedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741EA0729D47FBA0040E7EE /* IsCityAlreadyAddedUseCase.swift */; };
 		8783455C29CB3F27004FD216 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783455B29CB3F27004FD216 /* AppDelegate.swift */; };
 		8783456529CB3F29004FD216 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8783456429CB3F29004FD216 /* Assets.xcassets */; };
 		8783456829CB3F29004FD216 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8783456629CB3F29004FD216 /* LaunchScreen.storyboard */; };
 		8783457329CB3F2A004FD216 /* MyWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783457229CB3F2A004FD216 /* MyWeatherAppTests.swift */; };
 		8783457D29CB3F2A004FD216 /* MyWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783457C29CB3F2A004FD216 /* MyWeatherAppUITests.swift */; };
 		8783457F29CB3F2A004FD216 /* MyWeatherAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783457E29CB3F2A004FD216 /* MyWeatherAppUITestsLaunchTests.swift */; };
-		8783458D29CB48C7004FD216 /* PreferredCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783458C29CB48C7004FD216 /* PreferredCity.swift */; };
 		8783459029CB4DAE004FD216 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783458F29CB4DAE004FD216 /* AppConfiguration.swift */; };
 		8783459D29CB5FF6004FD216 /* PreferredCitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8783459C29CB5FF6004FD216 /* PreferredCitiesListViewModel.swift */; };
 		878345A329CB653F004FD216 /* PreferredCitiesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878345A229CB653F004FD216 /* PreferredCitiesRepository.swift */; };
@@ -69,6 +73,11 @@
 		8731919F29CDE481007B38A9 /* DefaultSearchCitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchCitiesRepository.swift; sourceTree = "<group>"; };
 		873191A129CDE4B2007B38A9 /* SearchCitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCitiesRepository.swift; sourceTree = "<group>"; };
 		873191A329CDEF98007B38A9 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		8741E9F229D31FF50040E7EE /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
+		8741E9F429D320740040E7EE /* DefaultImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageRepository.swift; sourceTree = "<group>"; };
+		8741E9F629D322CB0040E7EE /* GetIsPreferredImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetIsPreferredImageUseCase.swift; sourceTree = "<group>"; };
+		8741EA0529D47CAB0040E7EE /* PreferredCityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PreferredCityModel.xcdatamodel; sourceTree = "<group>"; };
+		8741EA0729D47FBA0040E7EE /* IsCityAlreadyAddedUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCityAlreadyAddedUseCase.swift; sourceTree = "<group>"; };
 		8783455829CB3F27004FD216 /* MyWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8783455B29CB3F27004FD216 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8783456429CB3F29004FD216 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,7 +88,6 @@
 		8783457829CB3F2A004FD216 /* MyWeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyWeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8783457C29CB3F2A004FD216 /* MyWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeatherAppUITests.swift; sourceTree = "<group>"; };
 		8783457E29CB3F2A004FD216 /* MyWeatherAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeatherAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		8783458C29CB48C7004FD216 /* PreferredCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCity.swift; sourceTree = "<group>"; };
 		8783458F29CB4DAE004FD216 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		8783459C29CB5FF6004FD216 /* PreferredCitiesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCitiesListViewModel.swift; sourceTree = "<group>"; };
 		878345A229CB653F004FD216 /* PreferredCitiesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCitiesRepository.swift; sourceTree = "<group>"; };
@@ -194,6 +202,7 @@
 				8783455B29CB3F27004FD216 /* AppDelegate.swift */,
 				8783458F29CB4DAE004FD216 /* AppConfiguration.swift */,
 				87A334AF29CC94B9008B2F4C /* AppFlowCoordinator.swift */,
+				8741EA0429D47CAB0040E7EE /* PreferredCityModel.xcdatamodeld */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -228,7 +237,6 @@
 		8783459F29CB64E0004FD216 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				8783458C29CB48C7004FD216 /* PreferredCity.swift */,
 				8731919B29CDDDCA007B38A9 /* Cities.swift */,
 			);
 			path = Entities;
@@ -247,6 +255,7 @@
 			children = (
 				878345A229CB653F004FD216 /* PreferredCitiesRepository.swift */,
 				873191A129CDE4B2007B38A9 /* SearchCitiesRepository.swift */,
+				8741E9F229D31FF50040E7EE /* ImageRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -264,6 +273,7 @@
 			children = (
 				878345A629CB6624004FD216 /* DefaultPreferredCitiesRepository.swift */,
 				8731919F29CDE481007B38A9 /* DefaultSearchCitiesRepository.swift */,
+				8741E9F429D320740040E7EE /* DefaultImageRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -349,6 +359,8 @@
 				87A334AD29CC9044008B2F4C /* AddPreferredCityUseCase.swift */,
 				87A334BA29CCAAF3008B2F4C /* GetPreferredCitiesUseCase.swift */,
 				8731919D29CDE34F007B38A9 /* SearchCitiesUseCase.swift */,
+				8741E9F629D322CB0040E7EE /* GetIsPreferredImageUseCase.swift */,
+				8741EA0729D47FBA0040E7EE /* IsCityAlreadyAddedUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -534,9 +546,10 @@
 				87A334AE29CC9044008B2F4C /* AddPreferredCityUseCase.swift in Sources */,
 				8793C93129CF2CB300B2E708 /* CityTableViewCell.swift in Sources */,
 				8793C93729CF31CD00B2E708 /* CityTableViewCellViewModel.swift in Sources */,
-				8783458D29CB48C7004FD216 /* PreferredCity.swift in Sources */,
 				8783459029CB4DAE004FD216 /* AppConfiguration.swift in Sources */,
 				87A334A629CB874E008B2F4C /* FloatingButton.swift in Sources */,
+				8741EA0629D47CAB0040E7EE /* PreferredCityModel.xcdatamodeld in Sources */,
+				8741EA0829D47FBA0040E7EE /* IsCityAlreadyAddedUseCase.swift in Sources */,
 				873191A029CDE482007B38A9 /* DefaultSearchCitiesRepository.swift in Sources */,
 				87A334B029CC94B9008B2F4C /* AppFlowCoordinator.swift in Sources */,
 				87A334B929CCA47E008B2F4C /* PreferredCitiesViewController+TableView.swift in Sources */,
@@ -545,8 +558,10 @@
 				8783455C29CB3F27004FD216 /* AppDelegate.swift in Sources */,
 				878345A329CB653F004FD216 /* PreferredCitiesRepository.swift in Sources */,
 				8731919729CDD61E007B38A9 /* AddPreferredCityViewController+TableView.swift in Sources */,
+				8741E9F529D320740040E7EE /* DefaultImageRepository.swift in Sources */,
 				878345B229CB75BF004FD216 /* PreferredCitiesListViewController.swift in Sources */,
 				87A334C529CCB1D3008B2F4C /* AddPreferredCityViewModel.swift in Sources */,
+				8741E9F729D322CB0040E7EE /* GetIsPreferredImageUseCase.swift in Sources */,
 				8793C93429CF30AA00B2E708 /* UIViewExtensions.swift in Sources */,
 				878345A729CB6624004FD216 /* DefaultPreferredCitiesRepository.swift in Sources */,
 				873191A429CDEF98007B38A9 /* Observable.swift in Sources */,
@@ -557,6 +572,7 @@
 				87A334AB29CC7E0A008B2F4C /* PreferredCitiesContainer.swift in Sources */,
 				87A334C129CCB06D008B2F4C /* AddPreferredCityViewController.swift in Sources */,
 				8731919E29CDE34F007B38A9 /* SearchCitiesUseCase.swift in Sources */,
+				8741E9F329D31FF50040E7EE /* ImageRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -894,6 +910,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8741EA0429D47CAB0040E7EE /* PreferredCityModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8741EA0529D47CAB0040E7EE /* PreferredCityModel.xcdatamodel */,
+			);
+			currentVersion = 8741EA0529D47CAB0040E7EE /* PreferredCityModel.xcdatamodel */;
+			path = PreferredCityModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8783455029CB3F27004FD216 /* Project object */;
 }

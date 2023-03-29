@@ -8,14 +8,12 @@
 import Foundation
 
 struct AddPreferredCityViewModelActions {
-    let showPreferredCities: () -> Void
 }
 
 protocol AddPreferredCityViewModelInput {
     func didTapSearchButton(searchValue: String) async -> Void
     func getNumberOfCities() -> Int
     func getHeightOfCell() -> CGFloat
-    func addCity(name: String) -> Void
 }
 
 protocol AddPreferredCityViewModelOutput {
@@ -32,20 +30,26 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var cellDataSource: Observable<[CityTableViewCellViewModel]> = Observable([])
     var dataSource: Cities?
-    
+
+    private let isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase
+    private let getIsPreferredImageUseCase: GetIsPreferredImageUseCase
     private let searchCitiesUseCase: SearchCitiesUseCase
     private let addPreferredCityUseCase: AddPreferredCityUseCase
     private let actions: AddPreferredCityViewModelActions?
+    private let cellActions: CityTableViewCellViewModelActions?
     
-    init(addPreferredCityUseCase: AddPreferredCityUseCase, searchCitiesUseCase: SearchCitiesUseCase, actions: AddPreferredCityViewModelActions? = nil) {
+    init(addPreferredCityUseCase: AddPreferredCityUseCase, searchCitiesUseCase: SearchCitiesUseCase, getIsPreferredImageUseCase: GetIsPreferredImageUseCase, isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase, actions: AddPreferredCityViewModelActions? = nil, cellActions: CityTableViewCellViewModelActions? = nil) {
         self.addPreferredCityUseCase = addPreferredCityUseCase
         self.searchCitiesUseCase = searchCitiesUseCase
+        self.getIsPreferredImageUseCase = getIsPreferredImageUseCase
+        self.isCityAlreadyAddedUseCase = isCityAlreadyAddedUseCase
         self.actions = actions
+        self.cellActions = cellActions
     }
     
     private func mapCellData() {
         self.cellDataSource.value = self.dataSource?.compactMap({
-            CityTableViewCellViewModel(city: $0)
+            DefaultCityTableViewCellViewModel(isCityAlreadyAddedUseCase: isCityAlreadyAddedUseCase, addPreferredCityUseCase: addPreferredCityUseCase, getIsPreferredImageUseCase: getIsPreferredImageUseCase, actions: cellActions, city: $0)
         }) ?? []
     }
     
@@ -73,12 +77,8 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
 
 extension DefaultAddPreferredCityViewModel {
     
-    func addCity(name: String) {
-        // TODO save selected city
-    }
-    
     func getHeightOfCell() -> CGFloat {
-        80
+        144
     }
     
     func didTapSearchButton(searchValue: String) async {

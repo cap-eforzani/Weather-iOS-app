@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension AddPreferredCityViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func setupTableView() {
         self.citiesList.delegate = self
         self.citiesList.dataSource = self
