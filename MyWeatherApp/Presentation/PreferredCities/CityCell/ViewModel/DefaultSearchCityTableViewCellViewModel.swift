@@ -1,5 +1,5 @@
 //
-//  SearchCityTableViewCellViewModel.swift
+//  DefaultSearchCityTableViewCellViewModel.swift
 //  MyWeatherApp
 //
 //  Created by Enzo Forzani on 30/03/2023.
