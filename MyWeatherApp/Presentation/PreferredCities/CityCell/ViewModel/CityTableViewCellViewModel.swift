@@ -14,7 +14,6 @@ protocol CityTableViewCellViewModelInput {
     func getLatText() -> String
     func getLonText() -> String
     func getCityName() -> String
-    func setCityToPreferred() -> Void
     func deleteCityFromPreferred() -> Void
     func didTapImageButton() -> Void
 }
@@ -33,16 +32,12 @@ class DefaultCityTableViewCellViewModel : CityTableViewCellViewModel {
     
     let city: City
     
-    let isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase?
-    let addPreferredCityUseCase: AddPreferredCityUseCase?
     let deletePreferredCityUseCase: DeletePreferredCityUseCase
     let getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase
     
-    init(isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase? = nil, deletePreferredCityUseCase: DeletePreferredCityUseCase, addPreferredCityUseCase: AddPreferredCityUseCase? = nil, getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase, city: City) {
+    init(deletePreferredCityUseCase: DeletePreferredCityUseCase, getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase, city: City) {
         self.city = city
-        self.isCityAlreadyAddedUseCase = isCityAlreadyAddedUseCase
         self.deletePreferredCityUseCase = deletePreferredCityUseCase
-        self.addPreferredCityUseCase = addPreferredCityUseCase
         self.getUIImageFromImageRepositoryUseCase = getUIImageFromImageRepositoryUseCase
     }
 }
@@ -54,14 +49,6 @@ extension DefaultCityTableViewCellViewModel {
             try deletePreferredCityUseCase.execute(city: self.city)
         } catch {
             print("[ERROR] City " + self.city.name + " not deleted")
-        }
-    }
-    
-    func setCityToPreferred() {
-        do {
-            try addPreferredCityUseCase?.execute(city: self.city)
-        } catch {
-            print("[ERROR] City " + self.city.name + " not saved")
         }
     }
     

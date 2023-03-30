@@ -12,7 +12,12 @@ struct PreferredCitiesTableViewCellViewModelActions {
     let getPreferredCities: () -> Void
 }
 
-class DefaultPreferredCitiesTableViewCellViewModel : DefaultCityTableViewCellViewModel {
+protocol PreferredCitiesTableViewCellViewModel {
+    func didTapImageButton() -> Void
+    func setImageToImageButton() -> Void
+}
+
+class DefaultPreferredCitiesTableViewCellViewModel : DefaultCityTableViewCellViewModel, PreferredCitiesTableViewCellViewModel {
     
     private var actions: PreferredCitiesTableViewCellViewModelActions
     
