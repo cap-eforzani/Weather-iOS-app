@@ -9,17 +9,27 @@ import Foundation
 import UIKit
 
 final class DefaultImageRepository: ImageRepository {
-
-    func getUIImageForCityCell(isPreferred: Bool) throws -> UIImage {
-        if (isPreferred == true) {
+    
+    func getUIImage(image: ImageAvailableFromImageRepository) throws -> UIImage {
+        switch image {
+        case .preferred:
             if let image =  UIImage(named: "FavoriteOnIcon") {
                 return image
+            } else {
+                throw GetUIImageFromImageRepositoryUseCaseError.imageNotFound
             }
-        } else {
+        case .notPreferred:
             if let image =  UIImage(named: "FavoriteOffIcon") {
                 return image
+            } else {
+                throw GetUIImageFromImageRepositoryUseCaseError.imageNotFound
+            }
+        case .delete:
+            if let image =  UIImage(named: "DeleteIcon") {
+                return image
+            } else {
+                throw GetUIImageFromImageRepositoryUseCaseError.imageNotFound
             }
         }
-        throw GetIsPreferredImageUseCaseError.imageNotFound
     }
 }

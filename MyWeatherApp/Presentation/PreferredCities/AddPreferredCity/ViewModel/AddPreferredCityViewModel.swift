@@ -33,26 +33,24 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
 
     private let deletePreferredCityUseCase: DeletePreferredCityUseCase
     private let isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase
-    private let getIsPreferredImageUseCase: GetIsPreferredImageUseCase
+    private let getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase
     private let searchCitiesUseCase: SearchCitiesUseCase
     private let addPreferredCityUseCase: AddPreferredCityUseCase
+
     private let actions: AddPreferredCityViewModelActions?
-    private let cellActions: CityTableViewCellViewModelActions?
     
-    init(addPreferredCityUseCase: AddPreferredCityUseCase, deletePreferredCityUseCase: DeletePreferredCityUseCase, searchCitiesUseCase: SearchCitiesUseCase, getIsPreferredImageUseCase: GetIsPreferredImageUseCase, isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase, actions: AddPreferredCityViewModelActions? = nil, cellActions: CityTableViewCellViewModelActions? = nil) {
+    init(addPreferredCityUseCase: AddPreferredCityUseCase, deletePreferredCityUseCase: DeletePreferredCityUseCase, searchCitiesUseCase: SearchCitiesUseCase, getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase, isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase, actions: AddPreferredCityViewModelActions? = nil) {
         self.addPreferredCityUseCase = addPreferredCityUseCase
         self.deletePreferredCityUseCase = deletePreferredCityUseCase
         self.searchCitiesUseCase = searchCitiesUseCase
-        self.getIsPreferredImageUseCase = getIsPreferredImageUseCase
+        self.getUIImageFromImageRepositoryUseCase = getUIImageFromImageRepositoryUseCase
         self.isCityAlreadyAddedUseCase = isCityAlreadyAddedUseCase
         self.actions = actions
-        self.cellActions = cellActions
     }
     
     private func mapCellData() {
         self.cellDataSource.value = self.dataSource?.compactMap({
-            DefaultCityTableViewCellViewModel(isCityAlreadyAddedUseCase: isCityAlreadyAddedUseCase,
-                                              deletePreferredCityUseCase: deletePreferredCityUseCase, addPreferredCityUseCase: addPreferredCityUseCase, getIsPreferredImageUseCase: getIsPreferredImageUseCase, actions: cellActions, city: $0)
+            DefaultSearchCityTableViewCellViewModel(deletePreferredCityUseCase: deletePreferredCityUseCase, getUIImageFromImageRepositoryUseCase: getUIImageFromImageRepositoryUseCase, addPreferredCityUseCase: addPreferredCityUseCase, isCityAlreadyAddedUseCase: isCityAlreadyAddedUseCase, city: $0, actions: nil)
         }) ?? []
     }
     
@@ -60,10 +58,9 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
         if (isLoading.value == false) {
             isLoading.value = true
             do {
-                let cities = try await searchCitiesUseCase.execute(name: name)
-                self.dataSource = cities
+                self.dataSource = try await searchCitiesUseCase.execute(name: name)
                 self.isLoading.value = false
-                if (cities.isEmpty == true) {
+                if (self.dataSource?.isEmpty == true) {
                     self.noResults.value = true
                 } else {
                     self.noResults.value = false

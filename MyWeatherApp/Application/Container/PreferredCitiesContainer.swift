@@ -28,8 +28,8 @@ final class PreferredCitiesContainer: PreferredCitiesFlowCoordinatorDependencies
         DefaultIsCityAlreadyAddedUseCase(preferredCitiesRepository: makePreferredCitiesRepository())
     }
     
-    func makeGetIsPreferredImageUseCase() -> GetIsPreferredImageUseCase {
-        DefaultGetIsPreferredImageUseCase(imageRepository: makeImageRepository())
+    func makeGetUIImageFromImageRepositoryUseCase() -> GetUIImageFromImageRepositoryUseCase {
+        DefaultGetUIImageFromImageRepositoryUseCase(imageRepository: makeImageRepository())
     }
     
     func makeGetPreferredCitiesUseCase() -> GetPreferredCitiesUseCase {
@@ -60,16 +60,16 @@ final class PreferredCitiesContainer: PreferredCitiesFlowCoordinatorDependencies
         PreferredCitiesListViewController.create(with: makePreferredCitiesViewModel(actions: actions))
     }
     
-    func makeAddPreferredCityViewController(actions: AddPreferredCityViewModelActions, cellActions: CityTableViewCellViewModelActions) -> AddPreferredCityViewController {
-        AddPreferredCityViewController.create(with: makeAddPreferredCityViewModel(actions: actions, cellActions: cellActions))
+    func makeAddPreferredCityViewController(actions: AddPreferredCityViewModelActions) -> AddPreferredCityViewController {
+        AddPreferredCityViewController.create(with: makeAddPreferredCityViewModel(actions: actions))
     }
     
     func makePreferredCitiesViewModel(actions: PreferredCitiesListViewModelActions) -> PreferredCitiesListViewModel {
-        DefaultPreferredCitiesListViewModel(getPreferredCitiesUseCase: makeGetPreferredCitiesUseCase(), actions: actions)
+        DefaultPreferredCitiesListViewModel(getPreferredCitiesUseCase: makeGetPreferredCitiesUseCase(), isCityAlreadyAddedUseCase: makeIsCityAlreadyAddedUseCase(), getUIImageFromImageRepositoryUseCase: makeGetUIImageFromImageRepositoryUseCase(), addPreferredCityUseCase: makeAddPreferredCityUseCase(), deletePreferredCityUseCase: makeDeletePreferredCityUseCase(), actions: actions)
     }
     
-    func makeAddPreferredCityViewModel(actions: AddPreferredCityViewModelActions, cellActions: CityTableViewCellViewModelActions) -> AddPreferredCityViewModel {
-        DefaultAddPreferredCityViewModel(addPreferredCityUseCase: makeAddPreferredCityUseCase(), deletePreferredCityUseCase: makeDeletePreferredCityUseCase(), searchCitiesUseCase: makeSearchCitiesUseCase(), getIsPreferredImageUseCase: makeGetIsPreferredImageUseCase(), isCityAlreadyAddedUseCase: makeIsCityAlreadyAddedUseCase(), actions: actions, cellActions: cellActions)
+    func makeAddPreferredCityViewModel(actions: AddPreferredCityViewModelActions) -> AddPreferredCityViewModel {
+        DefaultAddPreferredCityViewModel(addPreferredCityUseCase: makeAddPreferredCityUseCase(), deletePreferredCityUseCase: makeDeletePreferredCityUseCase(), searchCitiesUseCase: makeSearchCitiesUseCase(), getUIImageFromImageRepositoryUseCase: makeGetUIImageFromImageRepositoryUseCase(), isCityAlreadyAddedUseCase: makeIsCityAlreadyAddedUseCase(), actions: actions)
     }
     
     func makePreferredCitiesFlowCoordinator(navigationController: UINavigationController) -> PreferredCitiesFlowCoordinator {

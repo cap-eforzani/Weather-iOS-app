@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PreferredCitiesListViewController" customModule="MyWeatherApp" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="0aU-yK-lpy" id="nz6-hV-sP4"/>
                 <outlet property="noPreferredCityLabel" destination="0eA-WZ-hbx" id="r5e-hj-jWd"/>
                 <outlet property="tableView" destination="DoZ-KW-0Hz" id="w2n-sn-pzT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -31,12 +32,18 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="0aU-yK-lpy">
+                    <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                    <color key="color" systemColor="systemGray2Color"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="0aU-yK-lpy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Cc9-Ie-Lcg"/>
                 <constraint firstItem="0eA-WZ-hbx" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="GWB-6s-7FR"/>
                 <constraint firstItem="0eA-WZ-hbx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gWe-5q-5Bv"/>
+                <constraint firstItem="0aU-yK-lpy" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="hbP-PH-spn"/>
             </constraints>
             <point key="canvasLocation" x="-25.190839694656489" y="19.718309859154932"/>
         </view>
@@ -44,6 +51,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

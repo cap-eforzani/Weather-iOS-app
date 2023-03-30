@@ -8,23 +8,20 @@
 import Foundation
 import UIKit
 
-struct CityTableViewCellViewModelActions {
-}
-
 protocol CityTableViewCellViewModelInput {
-    func getIsPreferredImage() -> Void
+    func setImageToImageButton() -> Void
     func getCountryAndStateText() -> String
     func getLatText() -> String
     func getLonText() -> String
     func getCityName() -> String
     func setCityToPreferred() -> Void
     func deleteCityFromPreferred() -> Void
-    func didTapPreferredButton() -> Void
+    func didTapImageButton() -> Void
 }
 
 protocol CityTableViewCellViewModelOutput {
     var isPreferred: Observable<Bool> { get }
-    var isPreferredImage: Observable<UIImage> { get }
+    var imageForImageButton: Observable<UIImage> { get }
 }
 
 typealias CityTableViewCellViewModel = CityTableViewCellViewModelInput & CityTableViewCellViewModelOutput
@@ -32,23 +29,21 @@ typealias CityTableViewCellViewModel = CityTableViewCellViewModelInput & CityTab
 class DefaultCityTableViewCellViewModel : CityTableViewCellViewModel {
 
     var isPreferred: Observable<Bool> = Observable(false)
-    var isPreferredImage: Observable<UIImage> = Observable(UIImage())
+    var imageForImageButton: Observable<UIImage> = Observable(UIImage())
     
-    private let city: City
+    let city: City
     
-    private let isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase
-    private let deletePreferredCityUseCase: DeletePreferredCityUseCase
-    private let addPreferredCityUseCase: AddPreferredCityUseCase
-    private let getIsPreferredImageUseCase: GetIsPreferredImageUseCase
-    private let actions: CityTableViewCellViewModelActions?
+    let isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase?
+    let addPreferredCityUseCase: AddPreferredCityUseCase?
+    let deletePreferredCityUseCase: DeletePreferredCityUseCase
+    let getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase
     
-    init(isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase, deletePreferredCityUseCase: DeletePreferredCityUseCase, addPreferredCityUseCase: AddPreferredCityUseCase, getIsPreferredImageUseCase: GetIsPreferredImageUseCase, actions: CityTableViewCellViewModelActions? = nil, city: City) {
+    init(isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase? = nil, deletePreferredCityUseCase: DeletePreferredCityUseCase, addPreferredCityUseCase: AddPreferredCityUseCase? = nil, getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase, city: City) {
         self.city = city
         self.isCityAlreadyAddedUseCase = isCityAlreadyAddedUseCase
         self.deletePreferredCityUseCase = deletePreferredCityUseCase
         self.addPreferredCityUseCase = addPreferredCityUseCase
-        self.getIsPreferredImageUseCase = getIsPreferredImageUseCase
-        self.actions = actions
+        self.getUIImageFromImageRepositoryUseCase = getUIImageFromImageRepositoryUseCase
     }
 }
 
@@ -64,33 +59,18 @@ extension DefaultCityTableViewCellViewModel {
     
     func setCityToPreferred() {
         do {
-            try addPreferredCityUseCase.execute(city: self.city)
+            try addPreferredCityUseCase?.execute(city: self.city)
         } catch {
             print("[ERROR] City " + self.city.name + " not saved")
         }
     }
     
-    func didTapPreferredButton() {
-        do {
-            isPreferred.value = try isCityAlreadyAddedUseCase.execute(city: self.city)
-            if (isPreferred.value == true) {
-                deleteCityFromPreferred()
-            } else {
-                setCityToPreferred()
-            }
-            getIsPreferredImage()
-        } catch {
-            print("[ERROR] Cannot determine if " + self.city.name + " is preferred")
-        }
+    @objc func didTapImageButton() {
+        print("CityTableViewCellViewModel: didTapImageButton() not overriden")
     }
     
-    func getIsPreferredImage() {
-        do {
-            isPreferred.value = try isCityAlreadyAddedUseCase.execute(city: self.city)
-            isPreferredImage.value = try getIsPreferredImageUseCase.execute(isPreferred: isPreferred.value)
-        } catch {
-            isPreferredImage.value = UIImage()
-        }
+    @objc func setImageToImageButton() {
+        print("CityTableViewCellViewModel: setImageToImageButton() not overriden")
     }
     
     func getCountryAndStateText() -> String {

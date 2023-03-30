@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol PreferredCitiesFlowCoordinatorDependencies {
-    func makeAddPreferredCityViewController(actions: AddPreferredCityViewModelActions, cellActions: CityTableViewCellViewModelActions) -> AddPreferredCityViewController
+    func makeAddPreferredCityViewController(actions: AddPreferredCityViewModelActions) -> AddPreferredCityViewController
     func makePreferredCitiesViewController(actions: PreferredCitiesListViewModelActions) -> PreferredCitiesListViewController
 }
 
@@ -31,8 +31,7 @@ final class PreferredCitiesFlowCoordinator {
     
     private func showAddPreferredCity() {
         let actions = AddPreferredCityViewModelActions()
-        let cellActions = CityTableViewCellViewModelActions()
-        let viewController = dependencies.makeAddPreferredCityViewController(actions: actions, cellActions: cellActions)
+        let viewController = dependencies.makeAddPreferredCityViewController(actions: actions)
         navigationController.pushViewController(viewController, animated: true)
     }
     

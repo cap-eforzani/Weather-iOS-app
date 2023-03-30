@@ -17,7 +17,7 @@ enum GetPreferredCitiesUseCaseError: Error {
 }
 
 protocol GetPreferredCitiesUseCase {
-    func execute() throws -> Int
+    func execute() throws -> Cities
 }
 
 final class DefaultGetPreferredCityUseCase : GetPreferredCitiesUseCase {
@@ -28,11 +28,8 @@ final class DefaultGetPreferredCityUseCase : GetPreferredCitiesUseCase {
         self.preferredCitiesRepository = preferredCitiesRepository
     }
     
-    func execute() throws -> Int {
-        let preferredCities = try preferredCitiesRepository.getPreferredCities()
-        print("PREFERRED CITIES from GetUseCase")
-        print(preferredCities)
-        return preferredCities.count
+    func execute() throws -> Cities {
+        return try preferredCitiesRepository.getPreferredCities()
     }
     
 }

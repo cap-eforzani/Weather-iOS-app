@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+enum ImageAvailableFromImageRepository {
+    case preferred
+    case notPreferred
+    case delete
+}
+
 protocol ImageRepository {
-    func getUIImageForCityCell(isPreferred: Bool) throws -> UIImage
+    func getUIImage(image: ImageAvailableFromImageRepository) throws -> UIImage
 }

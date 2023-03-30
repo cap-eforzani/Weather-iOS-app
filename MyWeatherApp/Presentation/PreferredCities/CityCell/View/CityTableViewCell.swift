@@ -31,12 +31,12 @@ class CityTableViewCell: UITableViewCell {
     
     @objc func didFavoriteImageTapped(sender: UITapGestureRecognizer) {
         if (sender.state == .ended) {
-            viewModel.didTapPreferredButton()
+            viewModel.didTapImageButton()
         }
     }
     
     private func bind(to viewModel: CityTableViewCellViewModel) {
-        viewModel.isPreferredImage.observe(on: favoriteImage) { isPreferredImage in
+        viewModel.imageForImageButton.observe(on: favoriteImage) { isPreferredImage in
             DispatchQueue.main.async {
                 self.favoriteImage.image = isPreferredImage
             }
@@ -79,7 +79,7 @@ class CityTableViewCell: UITableViewCell {
         self.viewModel = viewModel
         bind(to: viewModel)
 
-        viewModel.getIsPreferredImage()
+        viewModel.setImageToImageButton()
         cityNameLabel.text = viewModel.getCityName()
         countryAndStateLabel.text = viewModel.getCountryAndStateText()
         latLabel.text = viewModel.getLatText()
