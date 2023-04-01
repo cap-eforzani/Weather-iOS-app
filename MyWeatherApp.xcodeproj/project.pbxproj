@@ -49,6 +49,9 @@
 		87A334C129CCB06D008B2F4C /* AddPreferredCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334BF29CCB06D008B2F4C /* AddPreferredCityViewController.swift */; };
 		87A334C229CCB06D008B2F4C /* AddPreferredCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87A334C029CCB06D008B2F4C /* AddPreferredCityViewController.xib */; };
 		87A334C529CCB1D3008B2F4C /* AddPreferredCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A334C429CCB1D3008B2F4C /* AddPreferredCityViewModel.swift */; };
+		87C2F82129D71957009E95F6 /* NavigationBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C2F82029D71957009E95F6 /* NavigationBarViewModel.swift */; };
+		87C2F82329D724EE009E95F6 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C2F82229D724EE009E95F6 /* NavigationBar.swift */; };
+		87C2F82D29D8B092009E95F6 /* EduNSWACTFoundation-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87C2F82B29D8AF76009E95F6 /* EduNSWACTFoundation-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +118,9 @@
 		87A334BF29CCB06D008B2F4C /* AddPreferredCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPreferredCityViewController.swift; sourceTree = "<group>"; };
 		87A334C029CCB06D008B2F4C /* AddPreferredCityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPreferredCityViewController.xib; sourceTree = "<group>"; };
 		87A334C429CCB1D3008B2F4C /* AddPreferredCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPreferredCityViewModel.swift; sourceTree = "<group>"; };
+		87C2F82029D71957009E95F6 /* NavigationBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarViewModel.swift; sourceTree = "<group>"; };
+		87C2F82229D724EE009E95F6 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		87C2F82B29D8AF76009E95F6 /* EduNSWACTFoundation-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "EduNSWACTFoundation-Regular.ttf"; path = "../../../../../Downloads/Edu_NSW_ACT_Foundation/static/EduNSWACTFoundation-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +222,7 @@
 		8783459629CB5AD3004FD216 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				87C2F82A29D8AF60009E95F6 /* Fonts */,
 				8783456929CB3F29004FD216 /* Info.plist */,
 				8783456429CB3F29004FD216 /* Assets.xcassets */,
 			);
@@ -287,6 +294,7 @@
 		878345A829CB6B97004FD216 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				87C2F81B29D71892009E95F6 /* NavigationBar */,
 				87A334A429CB8740008B2F4C /* Utils */,
 				878345A929CB6BEE004FD216 /* PreferredCities */,
 			);
@@ -418,6 +426,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		87C2F81B29D71892009E95F6 /* NavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				87C2F81F29D7193B009E95F6 /* ViewModel */,
+				87C2F82229D724EE009E95F6 /* NavigationBar.swift */,
+			);
+			path = NavigationBar;
+			sourceTree = "<group>";
+		};
+		87C2F81F29D7193B009E95F6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				87C2F82029D71957009E95F6 /* NavigationBarViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		87C2F82A29D8AF60009E95F6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				87C2F82B29D8AF76009E95F6 /* EduNSWACTFoundation-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -523,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8793C93229CF2CB300B2E708 /* CityTableViewCell.xib in Resources */,
+				87C2F82D29D8B092009E95F6 /* EduNSWACTFoundation-Regular.ttf in Resources */,
 				8783456829CB3F29004FD216 /* LaunchScreen.storyboard in Resources */,
 				8783456529CB3F29004FD216 /* Assets.xcassets in Resources */,
 				878345B329CB75BF004FD216 /* PreferredCitiesListViewController.xib in Resources */,
@@ -570,6 +604,7 @@
 				8731919729CDD61E007B38A9 /* AddPreferredCityViewController+TableView.swift in Sources */,
 				8741E9F529D320740040E7EE /* DefaultImageRepository.swift in Sources */,
 				878345B229CB75BF004FD216 /* PreferredCitiesListViewController.swift in Sources */,
+				87C2F82129D71957009E95F6 /* NavigationBarViewModel.swift in Sources */,
 				87A334C529CCB1D3008B2F4C /* AddPreferredCityViewModel.swift in Sources */,
 				8717E7F529D5C2FE006C15D7 /* DefaultSearchCityTableViewCellViewModel.swift in Sources */,
 				8741E9F729D322CB0040E7EE /* GetUIImageFromImageRepositoryUseCase.swift in Sources */,
@@ -584,6 +619,7 @@
 				87A334C129CCB06D008B2F4C /* AddPreferredCityViewController.swift in Sources */,
 				8731919E29CDE34F007B38A9 /* SearchCitiesUseCase.swift in Sources */,
 				8787C2DB29D4BDAA0033FF90 /* DeletePreferredCityUseCase.swift in Sources */,
+				87C2F82329D724EE009E95F6 /* NavigationBar.swift in Sources */,
 				8741E9F329D31FF50040E7EE /* ImageRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

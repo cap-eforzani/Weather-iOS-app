@@ -31,6 +31,7 @@ class PreferredCitiesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setDefaultNavigationBar(title: viewModel.screenTitle, isBackButtonEnabled: false)
         setupViews()
         bind(to: viewModel)
         viewModel.getPreferredCities()

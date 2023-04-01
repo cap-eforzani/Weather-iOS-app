@@ -17,6 +17,7 @@ protocol AddPreferredCityViewModelInput {
 }
 
 protocol AddPreferredCityViewModelOutput {
+    var screenTitle: String { get }
     var noResults: Observable<Bool> { get }
     var isLoading: Observable<Bool> { get }
     var cellDataSource: Observable<[CityTableViewCellViewModel]> { get }
@@ -38,6 +39,8 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
     private let addPreferredCityUseCase: AddPreferredCityUseCase
 
     private let actions: AddPreferredCityViewModelActions?
+    
+    let screenTitle = "Search for a City"
     
     init(addPreferredCityUseCase: AddPreferredCityUseCase, deletePreferredCityUseCase: DeletePreferredCityUseCase, searchCitiesUseCase: SearchCitiesUseCase, getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase, isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase, actions: AddPreferredCityViewModelActions? = nil) {
         self.addPreferredCityUseCase = addPreferredCityUseCase
