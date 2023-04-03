@@ -8,7 +8,6 @@
 import Foundation
 import CoreData
 
-
 final class DefaultPreferredCitiesRepository {
 
     lazy var persistentContainer: NSPersistentContainer = {

@@ -10,30 +10,15 @@ import UIKit
 
 extension UIViewController {
     
-    func setDefaultNavigationBar(title: String, isBackButtonEnabled: Bool) {
-        let actions = NavigationBarViewModelActions(didTapBackButton: navigateToPreviousView, didTapRightButton: navigateToSettingsView)
-        let viewModel = DefaultNavigationBarViewModel(actions: actions, title: title)
-
-        setNavigationBar(with: viewModel, isBackButtonEnabled: isBackButtonEnabled)
-    }
-    
-    func setNavigationBar(with viewModel: NavigationBarViewModel, isBackButtonEnabled: Bool) {
+    func setNavigationBar(with viewModel: NavigationBarViewModel, isBackButtonEnabled: Bool, isSettingsButtonEnabled: Bool) {
         setBackgroundColor(color: viewModel.getBackgroundColor())
         if (isBackButtonEnabled == true) {
             setBackButton(button: viewModel.createBackButton())
         }
         setupTitle(label: viewModel.createTitle())
-        setRightButton(button: viewModel.createSettingsButton())
-    }
-    
-    func navigateToPreviousView() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    func navigateToSettingsView() {
-        print("navigateToSettingsView")
-        // TODO
-        // self.navigationController?.setViewControllers(<#T##viewControllers: [UIViewController]##[UIViewController]#>, animated: true)
+        if (isSettingsButtonEnabled == true) {
+            setRightButton(button: viewModel.createSettingsButton())
+        }
     }
     
     private func setBackgroundColor(color: UIColor) {

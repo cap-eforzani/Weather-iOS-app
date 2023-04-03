@@ -16,11 +16,10 @@ protocol PreferredCitiesListViewModelInput {
     func getPreferredCities() -> Void
     func getNumberOfPreferredCities() -> Int
     func didTapFloatingButton() -> Void
-    
+    func showLatAndLon() -> Bool
 }
 
 protocol PreferredCitiesListViewModelOutput {
-    var screenTitle: String { get }
     var noResults: Observable<Bool> { get }
     var cellDataSource: Observable<[CityTableViewCellViewModel]> { get }
     var isLoading: Observable<Bool> { get }
@@ -35,6 +34,7 @@ class DefaultPreferredCitiesListViewModel : PreferredCitiesListViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var dataSource: Cities?
     
+    private let getShowLattitudeAndLongitudeUseCase: GetShowLattitudeAndLongitudeUseCase
     private let getPreferredCitiesUseCase: GetPreferredCitiesUseCase
     private let deletePreferredCityUseCase: DeletePreferredCityUseCase
     private let isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase
@@ -42,15 +42,14 @@ class DefaultPreferredCitiesListViewModel : PreferredCitiesListViewModel {
     private let addPreferredCityUseCase: AddPreferredCityUseCase
 
     private let actions: PreferredCitiesListViewModelActions?
-    
-    let screenTitle = "My Preferred Cities"
-    
-    init(getPreferredCitiesUseCase: GetPreferredCitiesUseCase, isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase, getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase, addPreferredCityUseCase: AddPreferredCityUseCase, deletePreferredCityUseCase: DeletePreferredCityUseCase, actions: PreferredCitiesListViewModelActions? = nil) {
+        
+    init(getPreferredCitiesUseCase: GetPreferredCitiesUseCase, isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase, getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase, addPreferredCityUseCase: AddPreferredCityUseCase, deletePreferredCityUseCase: DeletePreferredCityUseCase, getShowLattitudeAndLongitudeUseCase: GetShowLattitudeAndLongitudeUseCase, actions: PreferredCitiesListViewModelActions? = nil) {
         self.getPreferredCitiesUseCase = getPreferredCitiesUseCase
         self.isCityAlreadyAddedUseCase = isCityAlreadyAddedUseCase
         self.getUIImageFromImageRepositoryUseCase = getUIImageFromImageRepositoryUseCase
         self.addPreferredCityUseCase = addPreferredCityUseCase
         self.deletePreferredCityUseCase = deletePreferredCityUseCase
+        self.getShowLattitudeAndLongitudeUseCase = getShowLattitudeAndLongitudeUseCase
         self.actions = actions
     }
     
@@ -64,7 +63,10 @@ class DefaultPreferredCitiesListViewModel : PreferredCitiesListViewModel {
 extension DefaultPreferredCitiesListViewModel {
 
     func getHeightOfCell() -> CGFloat {
-        144
+        if (showLatAndLon() == true) {
+            return 144
+        }
+        return 88
     }
     
     func didTapFloatingButton() {
@@ -91,5 +93,9 @@ extension DefaultPreferredCitiesListViewModel {
 
     func getNumberOfPreferredCities() -> Int {
         return self.dataSource?.count ?? 0
+    }
+
+    func showLatAndLon() -> Bool {
+        return getShowLattitudeAndLongitudeUseCase.execute()
     }
 }

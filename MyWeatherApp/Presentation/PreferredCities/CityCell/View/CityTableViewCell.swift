@@ -75,14 +75,21 @@ class CityTableViewCell: UITableViewCell {
         favoriteImage.isUserInteractionEnabled = true
     }
     
-    func fill(with viewModel: CityTableViewCellViewModel) {
+    func fill(with viewModel: CityTableViewCellViewModel, showLatAndLon: Bool) {
         self.viewModel = viewModel
         bind(to: viewModel)
 
         viewModel.setImageToImageButton()
         cityNameLabel.text = viewModel.getCityName()
         countryAndStateLabel.text = viewModel.getCountryAndStateText()
-        latLabel.text = viewModel.getLatText()
-        lonLabel.text = viewModel.getLonText()
+        if (showLatAndLon == true) {
+            latLabel.isHidden = false
+            lonLabel.isHidden = false
+            latLabel.text = viewModel.getLatText()
+            lonLabel.text = viewModel.getLonText()
+        } else {
+            latLabel.isHidden = true
+            lonLabel.isHidden = true
+        }
     }
 }

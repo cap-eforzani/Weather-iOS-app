@@ -9,8 +9,10 @@ import Foundation
 import UIKit
 
 protocol PreferredCitiesFlowCoordinatorDependencies {
-    func makeAddPreferredCityViewController(actions: AddPreferredCityViewModelActions) -> AddPreferredCityViewController
-    func makePreferredCitiesViewController(actions: PreferredCitiesListViewModelActions) -> PreferredCitiesListViewController
+    func makeAddPreferredCityViewController(navigationBar: NavigationBarViewModel, actions: AddPreferredCityViewModelActions) -> AddPreferredCityViewController
+    func makePreferredCitiesViewController(navigationBar: NavigationBarViewModel, actions: PreferredCitiesListViewModelActions) -> PreferredCitiesListViewController
+    func makeSettingsViewController(navigationBar: NavigationBarViewModel, actions: SettingsViewModelActions?) -> SettingsViewController
+    func makeNavigationBarViewModel(actions: NavigationBarViewModelActions, title: String) -> NavigationBarViewModel
 }
 
 final class PreferredCitiesFlowCoordinator {
@@ -25,17 +27,31 @@ final class PreferredCitiesFlowCoordinator {
     
     func start() {
         let actions = PreferredCitiesListViewModelActions(showAddPreferredCity: showAddPreferredCity)
-        let viewController = dependencies.makePreferredCitiesViewController(actions: actions)
+        let navigationBar = getDefaultNavigationBar(title: "My Preferred Cities")
+        let viewController = dependencies.makePreferredCitiesViewController(navigationBar: navigationBar, actions: actions)
         navigationController.pushViewController(viewController, animated: false)
     }
     
     private func showAddPreferredCity() {
         let actions = AddPreferredCityViewModelActions()
-        let viewController = dependencies.makeAddPreferredCityViewController(actions: actions)
+        let navigationBar = getDefaultNavigationBar(title: "Search for a City")
+        let viewController = dependencies.makeAddPreferredCityViewController(navigationBar: navigationBar, actions: actions)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    private func showPreferredCities() {
+    private func getDefaultNavigationBar(title: String) -> NavigationBarViewModel {
+        let navigationBarActions = NavigationBarViewModelActions(didTapBackButton: navigateToPreviousView, didTapRightButton: navigateToSettingsView)
+        return dependencies.makeNavigationBarViewModel(actions: navigationBarActions, title: title)
+    }
+    
+    func navigateToPreviousView() {
         navigationController.popViewController(animated: true)
+    }
+    
+    func navigateToSettingsView() {
+        let actions = SettingsViewModelActions()
+        let navigationBar = getDefaultNavigationBar(title: "Settings")
+        let viewController = dependencies.makeSettingsViewController(navigationBar: navigationBar, actions: actions)
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

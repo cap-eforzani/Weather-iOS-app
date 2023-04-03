@@ -20,6 +20,14 @@ final class PreferredCitiesContainer: PreferredCitiesFlowCoordinatorDependencies
         self.dependencies = dependencies
     }
     
+    func makeSetShowLattitudeAndLongitudeSettingUseCase() -> SetShowLattitudeAndLongitudeUseCase {
+        DefaultSetShowLattitudeAndLongitudeUseCase(userDefaultsRepository: makeUserDefaultsRepository())
+    }
+    
+    func makeGetShowLattitudeAndLongitudeSettingUseCase() -> GetShowLattitudeAndLongitudeUseCase {
+        DefaultGetShowLattitudeAndLongitudeUseCase(userDefaultsRepository: makeUserDefaultsRepository())
+    }
+    
     func makeDeletePreferredCityUseCase() -> DeletePreferredCityUseCase {
         DefaultDeletePreferredCityUseCase(preferredCitiesRepository: makePreferredCitiesRepository())
     }
@@ -48,6 +56,10 @@ final class PreferredCitiesContainer: PreferredCitiesFlowCoordinatorDependencies
         DefaultImageRepository()
     }
     
+    func makeUserDefaultsRepository() -> UserDefaultsRepository {
+        DefaultUserDefaultsRepository()
+    }
+    
     func makePreferredCitiesRepository() -> PreferredCitiesRepository {
         DefaultPreferredCitiesRepository()
     }
@@ -56,20 +68,32 @@ final class PreferredCitiesContainer: PreferredCitiesFlowCoordinatorDependencies
         DefaultSearchCitiesRepository(api: dependencies.api)
     }
     
-    func makePreferredCitiesViewController(actions: PreferredCitiesListViewModelActions) -> PreferredCitiesListViewController {
-        PreferredCitiesListViewController.create(with: makePreferredCitiesViewModel(actions: actions))
+    func makeSettingsViewController(navigationBar: NavigationBarViewModel, actions: SettingsViewModelActions? = nil) -> SettingsViewController {
+        SettingsViewController.create(with: makeSettingsViewModel(actions: actions), navigationBar: navigationBar)
     }
     
-    func makeAddPreferredCityViewController(actions: AddPreferredCityViewModelActions) -> AddPreferredCityViewController {
-        AddPreferredCityViewController.create(with: makeAddPreferredCityViewModel(actions: actions))
+    func makePreferredCitiesViewController(navigationBar: NavigationBarViewModel, actions: PreferredCitiesListViewModelActions) -> PreferredCitiesListViewController {
+        PreferredCitiesListViewController.create(with: makePreferredCitiesViewModel(actions: actions), navigationBar: navigationBar)
+    }
+    
+    func makeAddPreferredCityViewController(navigationBar: NavigationBarViewModel, actions: AddPreferredCityViewModelActions) -> AddPreferredCityViewController {
+        AddPreferredCityViewController.create(with: makeAddPreferredCityViewModel(actions: actions), navigationBar: navigationBar)
+    }
+    
+    func makeSettingsViewModel(actions: SettingsViewModelActions? = nil) -> SettingsViewModel {
+        DefaultSettingsViewModel(getShowLattitudeAndLongitudeSettingUseCase: makeGetShowLattitudeAndLongitudeSettingUseCase(), setShowLattitudeAndLongitudeSettingUseCase: makeSetShowLattitudeAndLongitudeSettingUseCase(), actions: actions)
+    }
+    
+    func makeNavigationBarViewModel(actions: NavigationBarViewModelActions, title: String) -> NavigationBarViewModel {
+        DefaultNavigationBarViewModel(actions: actions, title: title)
     }
     
     func makePreferredCitiesViewModel(actions: PreferredCitiesListViewModelActions) -> PreferredCitiesListViewModel {
-        DefaultPreferredCitiesListViewModel(getPreferredCitiesUseCase: makeGetPreferredCitiesUseCase(), isCityAlreadyAddedUseCase: makeIsCityAlreadyAddedUseCase(), getUIImageFromImageRepositoryUseCase: makeGetUIImageFromImageRepositoryUseCase(), addPreferredCityUseCase: makeAddPreferredCityUseCase(), deletePreferredCityUseCase: makeDeletePreferredCityUseCase(), actions: actions)
+        DefaultPreferredCitiesListViewModel(getPreferredCitiesUseCase: makeGetPreferredCitiesUseCase(), isCityAlreadyAddedUseCase: makeIsCityAlreadyAddedUseCase(), getUIImageFromImageRepositoryUseCase: makeGetUIImageFromImageRepositoryUseCase(), addPreferredCityUseCase: makeAddPreferredCityUseCase(), deletePreferredCityUseCase: makeDeletePreferredCityUseCase(), getShowLattitudeAndLongitudeUseCase: makeGetShowLattitudeAndLongitudeSettingUseCase(), actions: actions)
     }
     
     func makeAddPreferredCityViewModel(actions: AddPreferredCityViewModelActions) -> AddPreferredCityViewModel {
-        DefaultAddPreferredCityViewModel(addPreferredCityUseCase: makeAddPreferredCityUseCase(), deletePreferredCityUseCase: makeDeletePreferredCityUseCase(), searchCitiesUseCase: makeSearchCitiesUseCase(), getUIImageFromImageRepositoryUseCase: makeGetUIImageFromImageRepositoryUseCase(), isCityAlreadyAddedUseCase: makeIsCityAlreadyAddedUseCase(), actions: actions)
+        DefaultAddPreferredCityViewModel(addPreferredCityUseCase: makeAddPreferredCityUseCase(), deletePreferredCityUseCase: makeDeletePreferredCityUseCase(), searchCitiesUseCase: makeSearchCitiesUseCase(), getUIImageFromImageRepositoryUseCase: makeGetUIImageFromImageRepositoryUseCase(), isCityAlreadyAddedUseCase: makeIsCityAlreadyAddedUseCase(), getShowLattitudeAndLongitudeUseCase: makeGetShowLattitudeAndLongitudeSettingUseCase(), actions: actions)
     }
     
     func makePreferredCitiesFlowCoordinator(navigationController: UINavigationController) -> PreferredCitiesFlowCoordinator {

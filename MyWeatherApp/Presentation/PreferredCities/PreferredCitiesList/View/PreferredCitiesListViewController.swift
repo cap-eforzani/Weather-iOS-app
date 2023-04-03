@@ -14,14 +14,16 @@ class PreferredCitiesListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: PreferredCitiesListViewModel!
+    var navigationBar: NavigationBarViewModel!
     
     var cellDataSource: [CityTableViewCellViewModel] = []
 
     private var floatingButton: FloatingButton = FloatingButton(backgroundColor: .systemBlue, image: UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32, weight: .medium)))
     
-    static func create(with viewModel: PreferredCitiesListViewModel) -> PreferredCitiesListViewController {
+    static func create(with viewModel: PreferredCitiesListViewModel, navigationBar: NavigationBarViewModel) -> PreferredCitiesListViewController {
         let view = PreferredCitiesListViewController()
         view.viewModel = viewModel
+        view.navigationBar = navigationBar
         return view
     }
     
@@ -31,15 +33,13 @@ class PreferredCitiesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDefaultNavigationBar(title: viewModel.screenTitle, isBackButtonEnabled: false)
+        setNavigationBar(with: self.navigationBar, isBackButtonEnabled: false, isSettingsButtonEnabled: true)
         setupViews()
         bind(to: viewModel)
         viewModel.getPreferredCities()
     }
     
     private func setupViews() {        
-        title = viewModel.screenTitle
-
         setupFloatingButton()
         setupNoPreferredCityLabel()
         setupTableView()

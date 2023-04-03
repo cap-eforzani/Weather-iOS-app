@@ -14,10 +14,11 @@ protocol AddPreferredCityViewModelInput {
     func didTapSearchButton(searchValue: String) async -> Void
     func getNumberOfCities() -> Int
     func getHeightOfCell() -> CGFloat
+    func showLatAndLon() -> Bool
+    func showLastSearch() async -> Void
 }
 
 protocol AddPreferredCityViewModelOutput {
-    var screenTitle: String { get }
     var noResults: Observable<Bool> { get }
     var isLoading: Observable<Bool> { get }
     var cellDataSource: Observable<[CityTableViewCellViewModel]> { get }
@@ -31,23 +32,24 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
     var isLoading: Observable<Bool> = Observable(false)
     var cellDataSource: Observable<[CityTableViewCellViewModel]> = Observable([])
     var dataSource: Cities?
+    var oldSearch = ""
 
     private let deletePreferredCityUseCase: DeletePreferredCityUseCase
     private let isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase
     private let getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase
     private let searchCitiesUseCase: SearchCitiesUseCase
     private let addPreferredCityUseCase: AddPreferredCityUseCase
+    private let getShowLattitudeAndLongitudeUseCase: GetShowLattitudeAndLongitudeUseCase
 
     private let actions: AddPreferredCityViewModelActions?
-    
-    let screenTitle = "Search for a City"
-    
-    init(addPreferredCityUseCase: AddPreferredCityUseCase, deletePreferredCityUseCase: DeletePreferredCityUseCase, searchCitiesUseCase: SearchCitiesUseCase, getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase, isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase, actions: AddPreferredCityViewModelActions? = nil) {
+        
+    init(addPreferredCityUseCase: AddPreferredCityUseCase, deletePreferredCityUseCase: DeletePreferredCityUseCase, searchCitiesUseCase: SearchCitiesUseCase, getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase, isCityAlreadyAddedUseCase: IsCityAlreadyAddedUseCase, getShowLattitudeAndLongitudeUseCase: GetShowLattitudeAndLongitudeUseCase, actions: AddPreferredCityViewModelActions? = nil) {
         self.addPreferredCityUseCase = addPreferredCityUseCase
         self.deletePreferredCityUseCase = deletePreferredCityUseCase
         self.searchCitiesUseCase = searchCitiesUseCase
         self.getUIImageFromImageRepositoryUseCase = getUIImageFromImageRepositoryUseCase
         self.isCityAlreadyAddedUseCase = isCityAlreadyAddedUseCase
+        self.getShowLattitudeAndLongitudeUseCase = getShowLattitudeAndLongitudeUseCase
         self.actions = actions
     }
     
@@ -81,14 +83,30 @@ class DefaultAddPreferredCityViewModel : AddPreferredCityViewModel {
 extension DefaultAddPreferredCityViewModel {
     
     func getHeightOfCell() -> CGFloat {
-        144
+        if (showLatAndLon() == true) {
+            return 144
+        }
+        return 88
     }
     
     func didTapSearchButton(searchValue: String) async {
-        await searchCityByName(name: searchValue)
+        if (searchValue.isEmpty == false) {
+            oldSearch = searchValue
+            await searchCityByName(name: searchValue)
+        }
+    }
+    
+    func showLastSearch() async {
+        if (oldSearch.isEmpty == false) {
+            await searchCityByName(name: oldSearch)
+        }
     }
     
     func getNumberOfCities() -> Int {
         return self.dataSource?.count ?? 0
+    }
+    
+    func showLatAndLon() -> Bool {
+        return getShowLattitudeAndLongitudeUseCase.execute()
     }
 }

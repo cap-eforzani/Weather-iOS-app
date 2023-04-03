@@ -44,7 +44,7 @@ extension AddPreferredCityViewController: UITableViewDelegate, UITableViewDataSo
             assertionFailure("Cannot dequeue reusable cell \(CityTableViewCell.self) with reuseIdentifier: \(CityTableViewCell.reuseIdentifier)")
             return UITableViewCell()
         }
-        cell.fill(with: self.cellDataSource[indexPath.row])
+        cell.fill(with: self.cellDataSource[indexPath.row], showLatAndLon: viewModel.showLatAndLon())
         cell.selectionStyle = .none
         return cell
     }

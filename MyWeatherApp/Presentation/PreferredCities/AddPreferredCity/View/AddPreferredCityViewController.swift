@@ -16,20 +16,28 @@ class AddPreferredCityViewController: UIViewController {
     @IBOutlet weak var cityNameTextField: UITextField!
     
     var viewModel: AddPreferredCityViewModel!
+    var navigationBar: NavigationBarViewModel!
     
     var cellDataSource: [CityTableViewCellViewModel] = []
     
-    static func create(with viewModel: AddPreferredCityViewModel) -> AddPreferredCityViewController {
+    static func create(with viewModel: AddPreferredCityViewModel, navigationBar: NavigationBarViewModel) -> AddPreferredCityViewController {
         let view = AddPreferredCityViewController()
         view.viewModel = viewModel
+        view.navigationBar = navigationBar
         return view
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDefaultNavigationBar(title: viewModel.screenTitle, isBackButtonEnabled: true)
+        setNavigationBar(with: self.navigationBar, isBackButtonEnabled: true, isSettingsButtonEnabled: true)
         setupViews()
         bind(to: viewModel)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        Task { @MainActor in
+            await viewModel.showLastSearch()
+        }
     }
 
     private func bind(to viewModel: AddPreferredCityViewModel) {
