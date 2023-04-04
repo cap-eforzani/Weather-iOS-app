@@ -10,25 +10,37 @@ import UIKit
 
 final class DefaultImageRepository: ImageRepository {
     
-    func getUIImage(image: ImageAvailableFromImageRepository) throws -> UIImage {
+    func getImageData(image: ImageAvailableFromImageRepository) throws -> Data {
         switch image {
         case .preferred:
             if let image =  UIImage(named: "FavoriteOnIcon") {
-                return image
+                if let data: Data = image.pngData() {
+                    return data
+                } else {
+                    throw GetImageDataFromImageRepositoryUseCaseError.cannotGetDataFromImage
+                }
             } else {
-                throw GetUIImageFromImageRepositoryUseCaseError.imageNotFound
+                throw GetImageDataFromImageRepositoryUseCaseError.imageNotFound
             }
         case .notPreferred:
             if let image =  UIImage(named: "FavoriteOffIcon") {
-                return image
+                if let data: Data = image.pngData() {
+                    return data
+                } else {
+                    throw GetImageDataFromImageRepositoryUseCaseError.cannotGetDataFromImage
+                }
             } else {
-                throw GetUIImageFromImageRepositoryUseCaseError.imageNotFound
+                throw GetImageDataFromImageRepositoryUseCaseError.imageNotFound
             }
         case .delete:
             if let image =  UIImage(named: "DeleteIcon") {
-                return image
+                if let data: Data = image.pngData() {
+                    return data
+                } else {
+                    throw GetImageDataFromImageRepositoryUseCaseError.cannotGetDataFromImage
+                }
             } else {
-                throw GetUIImageFromImageRepositoryUseCaseError.imageNotFound
+                throw GetImageDataFromImageRepositoryUseCaseError.imageNotFound
             }
         }
     }

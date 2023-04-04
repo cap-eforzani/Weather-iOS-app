@@ -13,19 +13,17 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var lattitudeAndLongitudeSwitch: UISwitch!
     
     var viewModel: SettingsViewModel!
-    var navigationBar: NavigationBarViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar(with: self.navigationBar, isBackButtonEnabled: true, isSettingsButtonEnabled: false)
+        setNavigationBar(title: viewModel.screenTitle, isBackButtonEnabled: true, didTapBackButton: viewModel.didTapNavigationBarBackButton, isRightButtonEnabled: false)
         setupViews()
         bind(to: viewModel)
     }
     
-    static func create(with viewModel: SettingsViewModel, navigationBar: NavigationBarViewModel) -> SettingsViewController {
+    static func create(with viewModel: SettingsViewModel) -> SettingsViewController {
         let view = SettingsViewController()
         view.viewModel = viewModel
-        view.navigationBar = navigationBar
         return view
     }
     

@@ -15,5 +15,5 @@ enum ImageAvailableFromImageRepository {
 }
 
 protocol ImageRepository {
-    func getUIImage(image: ImageAvailableFromImageRepository) throws -> UIImage
+    func getImageData(image: ImageAvailableFromImageRepository) throws -> Data
 }

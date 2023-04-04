@@ -17,7 +17,7 @@ extension AddPreferredCityViewController: UITableViewDelegate, UITableViewDataSo
         
         self.registerCells()
     }
-    
+        
     func reloadTableView() {
         DispatchQueue.main.async {
             self.citiesList.reloadData()
@@ -44,12 +44,23 @@ extension AddPreferredCityViewController: UITableViewDelegate, UITableViewDataSo
             assertionFailure("Cannot dequeue reusable cell \(CityTableViewCell.self) with reuseIdentifier: \(CityTableViewCell.reuseIdentifier)")
             return UITableViewCell()
         }
-        cell.fill(with: self.cellDataSource[indexPath.row], showLatAndLon: viewModel.showLatAndLon())
+        let cellData = cellDataSource[indexPath.row]
+        cell.fill(with: cellData)
         cell.selectionStyle = .none
+        cell.delegate = self
+        cell.index = indexPath.row
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         viewModel.getHeightOfCell()
+    }
+}
+
+extension AddPreferredCityViewController : CityTableViewCellDelegate {
+    
+    func didTapImageButton(index: Int) {
+        viewModel.didTapCityTableViewCellImageButton(index: index)
+        citiesList.reloadRows(at: [IndexPath(item: index, section: 0)], with: .automatic)
     }
 }

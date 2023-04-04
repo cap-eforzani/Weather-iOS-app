@@ -16,20 +16,18 @@ class AddPreferredCityViewController: UIViewController {
     @IBOutlet weak var cityNameTextField: UITextField!
     
     var viewModel: AddPreferredCityViewModel!
-    var navigationBar: NavigationBarViewModel!
     
-    var cellDataSource: [CityTableViewCellViewModel] = []
+    var cellDataSource: [CityTableViewCellData] = []
     
-    static func create(with viewModel: AddPreferredCityViewModel, navigationBar: NavigationBarViewModel) -> AddPreferredCityViewController {
+    static func create(with viewModel: AddPreferredCityViewModel) -> AddPreferredCityViewController {
         let view = AddPreferredCityViewController()
         view.viewModel = viewModel
-        view.navigationBar = navigationBar
         return view
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar(with: self.navigationBar, isBackButtonEnabled: true, isSettingsButtonEnabled: true)
+        setNavigationBar(title: viewModel.screenTitle, isBackButtonEnabled: true, didTapBackButton: viewModel.didTapNavigationBarBackButton, isRightButtonEnabled: true, didTapRightButton: viewModel.didTapNavigationBarSettingsButton)
         setupViews()
         bind(to: viewModel)
     }
@@ -37,6 +35,7 @@ class AddPreferredCityViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         Task { @MainActor in
             await viewModel.showLastSearch()
+            self.reloadTableView()
         }
     }
 
@@ -56,7 +55,6 @@ class AddPreferredCityViewController: UIViewController {
         }
         viewModel.cellDataSource.observe(on: viewModel.cellDataSource) { cellDataSource in
             self.cellDataSource = cellDataSource
-            self.reloadTableView()
         }
     }
     
@@ -79,6 +77,7 @@ class AddPreferredCityViewController: UIViewController {
         Task { @MainActor in
             let searchValue = cityNameTextField.text ?? ""
             await viewModel.didTapSearchButton(searchValue: searchValue)
+            self.reloadTableView()
         }
     }
 }

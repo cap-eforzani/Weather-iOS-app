@@ -14,26 +14,25 @@ class PreferredCitiesListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: PreferredCitiesListViewModel!
-    var navigationBar: NavigationBarViewModel!
     
-    var cellDataSource: [CityTableViewCellViewModel] = []
+    var cellDataSource: [CityTableViewCellData] = []
 
     private var floatingButton: FloatingButton = FloatingButton(backgroundColor: .systemBlue, image: UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(pointSize: 32, weight: .medium)))
     
-    static func create(with viewModel: PreferredCitiesListViewModel, navigationBar: NavigationBarViewModel) -> PreferredCitiesListViewController {
+    static func create(with viewModel: PreferredCitiesListViewModel) -> PreferredCitiesListViewController {
         let view = PreferredCitiesListViewController()
         view.viewModel = viewModel
-        view.navigationBar = navigationBar
         return view
     }
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel.getPreferredCities()
+        reloadTableView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar(with: self.navigationBar, isBackButtonEnabled: false, isSettingsButtonEnabled: true)
+        setNavigationBar(title: viewModel.screenTitle, isBackButtonEnabled: false, isRightButtonEnabled: true, didTapRightButton: viewModel.didTapNavigationBarSettingsButton)
         setupViews()
         bind(to: viewModel)
         viewModel.getPreferredCities()
@@ -61,7 +60,6 @@ class PreferredCitiesListViewController: UIViewController {
         }
         viewModel.cellDataSource.observe(on: viewModel.cellDataSource) { cellDataSource in
             self.cellDataSource = cellDataSource
-            self.reloadTableView()
         }
     }
     

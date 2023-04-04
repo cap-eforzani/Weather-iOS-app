@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -90,7 +91,7 @@
                 <outlet property="backView" destination="UKG-Mx-Jim" id="sAA-jy-1Kh"/>
                 <outlet property="cityNameLabel" destination="oV7-pM-bBg" id="xpi-4h-7am"/>
                 <outlet property="countryAndStateLabel" destination="H4P-3v-RNK" id="qTS-i0-bRq"/>
-                <outlet property="favoriteImage" destination="NNX-jf-ujU" id="G0N-Je-WvR"/>
+                <outlet property="imageViewButton" destination="NNX-jf-ujU" id="G0N-Je-WvR"/>
                 <outlet property="latLabel" destination="X2R-Ve-zX1" id="uEN-V1-zAB"/>
                 <outlet property="lonLabel" destination="Qd4-bK-JRc" id="NHT-oM-5Ow"/>
             </connections>

@@ -8,21 +8,26 @@
 import Foundation
 
 struct SettingsViewModelActions {
+    let navigateToPreviousView: () -> Void
 }
 
 protocol SettingsViewModelInput {
     func setShowLattitudeAndLongitudeSettingValue(value: Bool) -> Void
     func getShowLattitudeAndLongitudeSettingValue() -> Bool
     func didTapLattitudeAndLongitudeSwitch() -> Void
+    func didTapNavigationBarBackButton() -> Void
 }
 
 protocol SettingsViewModelOutput {
+    var screenTitle: String { get }
     var showLattitudeAndLongitude: Observable<Bool> { get }
 }
 
 typealias SettingsViewModel = SettingsViewModelInput & SettingsViewModelOutput
 
 class DefaultSettingsViewModel : SettingsViewModel {
+    
+    let screenTitle = "Settings"
     
     var showLattitudeAndLongitude: Observable<Bool> = Observable(false)
     
@@ -44,6 +49,10 @@ class DefaultSettingsViewModel : SettingsViewModel {
 }
 
 extension DefaultSettingsViewModel {
+    
+    func didTapNavigationBarBackButton() {
+        actions?.navigateToPreviousView()
+    }
     
     func setShowLattitudeAndLongitudeSettingValue(value: Bool) {
         showLattitudeAndLongitude.value = value

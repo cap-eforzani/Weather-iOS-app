@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 protocol CityTableViewCellViewModelInput {
     func setImageToImageButton() -> Void
@@ -20,7 +19,7 @@ protocol CityTableViewCellViewModelInput {
 
 protocol CityTableViewCellViewModelOutput {
     var isPreferred: Observable<Bool> { get }
-    var imageForImageButton: Observable<UIImage> { get }
+    var imageForImageButton: Observable<Data?> { get }
 }
 
 typealias CityTableViewCellViewModel = CityTableViewCellViewModelInput & CityTableViewCellViewModelOutput
@@ -28,17 +27,17 @@ typealias CityTableViewCellViewModel = CityTableViewCellViewModelInput & CityTab
 class DefaultCityTableViewCellViewModel : CityTableViewCellViewModel {
 
     var isPreferred: Observable<Bool> = Observable(false)
-    var imageForImageButton: Observable<UIImage> = Observable(UIImage())
+    var imageForImageButton: Observable<Data?> = Observable(nil)
     
     let city: City
     
     let deletePreferredCityUseCase: DeletePreferredCityUseCase
-    let getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase
+    let getImageDataFromImageRepositoryUseCase: GetImageDataFromImageRepositoryUseCase
     
-    init(deletePreferredCityUseCase: DeletePreferredCityUseCase, getUIImageFromImageRepositoryUseCase: GetUIImageFromImageRepositoryUseCase, city: City) {
+    init(deletePreferredCityUseCase: DeletePreferredCityUseCase, getImageDataFromImageRepositoryUseCase: GetImageDataFromImageRepositoryUseCase, city: City) {
         self.city = city
         self.deletePreferredCityUseCase = deletePreferredCityUseCase
-        self.getUIImageFromImageRepositoryUseCase = getUIImageFromImageRepositoryUseCase
+        self.getImageDataFromImageRepositoryUseCase = getImageDataFromImageRepositoryUseCase
     }
 }
 

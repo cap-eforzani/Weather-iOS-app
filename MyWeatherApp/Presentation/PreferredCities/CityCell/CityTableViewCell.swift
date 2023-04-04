@@ -7,6 +7,16 @@
 
 import UIKit
 
+struct CityTableViewCellData {
+    let name, country, state: String
+    let lat, lon: Double?
+    let imageData: Data
+}
+
+protocol CityTableViewCellDelegate {
+    func didTapImageButton(index: Int)
+}
+
 class CityTableViewCell: UITableViewCell {
     
     static let reuseIdentifier = String(describing: CityTableViewCell.self)
@@ -17,29 +27,52 @@ class CityTableViewCell: UITableViewCell {
 
     @IBOutlet weak var latLabel: UILabel!
     @IBOutlet weak var lonLabel: UILabel!
-    @IBOutlet weak var favoriteImage: UIImageView!
+    @IBOutlet weak var imageViewButton: UIImageView!
     @IBOutlet weak var countryAndStateLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var backView: UIView!
-
-    private var viewModel: CityTableViewCellViewModel!
+    
+    var delegate: CityTableViewCellDelegate?
+    var index: Int = 0
+    
+    func fill(with data: CityTableViewCellData) {
+        cityNameLabel.text = data.name
+        countryAndStateLabel.text = data.country + ", " + data.state
+        setLatLabel(lat: data.lat)
+        setLonLabel(lon: data.lon)
+        imageViewButton.image = UIImage(data: data.imageData)
+    }
+    
+    private func setLatLabel(lat: Double?) {
+        if let latValue: Double = lat {
+            latLabel.isHidden = false
+            latLabel.isEnabled = true
+            latLabel.text = "Latitude: " + String(format: "%f", latValue)
+        } else {
+            latLabel.isHidden = true
+            latLabel.isEnabled = false
+        }
+    }
+    
+    private func setLonLabel(lon: Double?) {
+        if let lonValue: Double = lon {
+            lonLabel.isHidden = false
+            lonLabel.isEnabled = true
+            lonLabel.text = "Longitude: " + String(format: "%f", lonValue)
+        } else {
+            lonLabel.isHidden = true
+            lonLabel.isEnabled = false
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setupViews()
     }
-    
+        
     @objc func didFavoriteImageTapped(sender: UITapGestureRecognizer) {
         if (sender.state == .ended) {
-            viewModel.didTapImageButton()
-        }
-    }
-    
-    private func bind(to viewModel: CityTableViewCellViewModel) {
-        viewModel.imageForImageButton.observe(on: favoriteImage) { isPreferredImage in
-            DispatchQueue.main.async {
-                self.favoriteImage.image = isPreferredImage
-            }
+            delegate?.didTapImageButton(index: self.index)
         }
     }
     
@@ -71,25 +104,7 @@ class CityTableViewCell: UITableViewCell {
     
     private func setupFavoriteImage() {
         let imageTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didFavoriteImageTapped))
-        favoriteImage.addGestureRecognizer(imageTapGestureRecognizer)
-        favoriteImage.isUserInteractionEnabled = true
-    }
-    
-    func fill(with viewModel: CityTableViewCellViewModel, showLatAndLon: Bool) {
-        self.viewModel = viewModel
-        bind(to: viewModel)
-
-        viewModel.setImageToImageButton()
-        cityNameLabel.text = viewModel.getCityName()
-        countryAndStateLabel.text = viewModel.getCountryAndStateText()
-        if (showLatAndLon == true) {
-            latLabel.isHidden = false
-            lonLabel.isHidden = false
-            latLabel.text = viewModel.getLatText()
-            lonLabel.text = viewModel.getLonText()
-        } else {
-            latLabel.isHidden = true
-            lonLabel.isHidden = true
-        }
+        imageViewButton.addGestureRecognizer(imageTapGestureRecognizer)
+        imageViewButton.isUserInteractionEnabled = true
     }
 }
