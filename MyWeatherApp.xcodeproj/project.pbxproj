@@ -87,6 +87,7 @@
 		8741E9F629D322CB0040E7EE /* GetImageDataFromImageRepositoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetImageDataFromImageRepositoryUseCase.swift; sourceTree = "<group>"; };
 		8741EA0529D47CAB0040E7EE /* PreferredCityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PreferredCityModel.xcdatamodel; sourceTree = "<group>"; };
 		8741EA0729D47FBA0040E7EE /* IsCityAlreadyAddedUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsCityAlreadyAddedUseCase.swift; sourceTree = "<group>"; };
+		8769B2D929DDA8090025FEB4 /* PreferredCityModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PreferredCityModel2.xcdatamodel; sourceTree = "<group>"; };
 		87703FE329DB6AED00FE236B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		87703FE429DB6AED00FE236B /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		87703FE729DB6E9100FE236B /* UserDefaultsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsRepository.swift; sourceTree = "<group>"; };
@@ -967,6 +968,7 @@
 		8741EA0429D47CAB0040E7EE /* PreferredCityModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				8769B2D929DDA8090025FEB4 /* PreferredCityModel2.xcdatamodel */,
 				8741EA0529D47CAB0040E7EE /* PreferredCityModel.xcdatamodel */,
 			);
 			currentVersion = 8741EA0529D47CAB0040E7EE /* PreferredCityModel.xcdatamodel */;
